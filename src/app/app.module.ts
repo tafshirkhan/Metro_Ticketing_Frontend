@@ -12,6 +12,8 @@ import { EditTrainComponent } from './layout/admin-dashboard/train/edit-train/ed
 import { TrainListComponent } from './layout/admin-dashboard/train/train-list/train-list.component';
 import { LoginComponent } from './layout/login/login.component';
 import { SignupComponent } from './layout/signup/signup.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/Auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,12 @@ import { SignupComponent } from './layout/signup/signup.component';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

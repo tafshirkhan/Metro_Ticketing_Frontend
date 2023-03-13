@@ -1,19 +1,129 @@
-<div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    <form>
-        <h3>Login Here</h3>
+<!-- <div class="body"> 
+	<div class="main">  	
+      <h3 class="title"><b>Login</b></h3>
+			<div class="login">
+				<form [formGroup]="loginForm">
+                    <div> 
+                        <div>
+                            <input type="text" 
+                                formControlName="email" 
+                                name="email" 
+                                class="form-control form-control-sm" 
+                                placeholder="Email" required="">
+                        </div>
+                        <div *ngIf="
+                                    loginForm.get('email')?.invalid &&
+                                    loginForm.get('email')?.errors &&
+                                    (loginForm.get('email')?.dirty ||
+                                    loginForm.get('email')?.touched)">
+                                <span
+                                    class="text-danger"
+                                    *ngIf="loginForm.get('email').hasError('required')">
+                                    Email is required.
+                                </span>
+                                <span
+                                    class="text-danger"
+                                    *ngIf="loginForm.get('email').hasError('email')">
+                                    Email is Invalid.
+                                </span>
+                        </div>
+                     </div>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username">
+				     	<div> 
+                        <div>
+                            <input 
+                                type="password" 
+                                formControlName="password" 
+                                name="password" 
+                                class="form-control form-control-sm" 
+                                placeholder="Password" 
+                                required="">
+                        </div>
+                        <div *ngIf="
+                                    loginForm.get('password')?.invalid &&
+                                    loginForm.get('password')?.errors &&
+                                    (loginForm.get('password')?.dirty ||
+                                    loginForm.get('password')?.touched)">
+                                <span
+                                    class="text-danger"
+                                    *ngIf="loginForm.get('password').hasError('required')">
+                                    Password is required.
+                                </span>
+                                <span class="text-danger" *ngIf="loginForm.get('password').hasError('minlength')">
+                                  Password should be at least 6 characters.
+                                </span>
+                                <span class="text-danger" *ngIf="loginForm.get('password').hasError('maxlength')">
+                                  Password should be less than 15 characters.
+                                </span>
+                        </div>
+                    </div>
+					        <button type="submit">Login</button>
+				</form>
+			</div>
+	</div>
+</div> -->
 
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
-
-        <button>Log In</button>
-        <div class="social">
-          <div class="go"><i class="fab fa-google"></i>  Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-        </div>
-    </form>
+<div class="body"> 
+	<div class="main">  	
+            <h3 class="title"><b>Login</b></h3>
+			<div class="signup">   
+				<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div> 
+                    <div>
+                         <input type="text" 
+                            formControlName="email" 
+                            name="email" 
+                            class="form-control form-control-sm" 
+                            placeholder="Email">
+                    </div>
+                    <div *ngIf="
+                                loginForm.get('email')?.invalid &&
+                                loginForm.get('email')?.errors &&
+                                (loginForm.get('email')?.dirty ||
+                                loginForm.get('email')?.touched)">
+                                <span
+                                    class="text-danger"
+                                    *ngIf="loginForm.get('email').hasError('required')">
+                                    Email is required.
+                                </span>
+                                <span
+                                    class="text-danger"
+                                    *ngIf="loginForm.get('email').hasError('email')">
+                                    Email is Invalid.
+                                </span>
+                        </div>
+                </div>
+                <div> 
+                    <div>
+                        <input 
+                            type="password" 
+                            formControlName="password" 
+                            name="password" 
+                            class="form-control form-control-sm" 
+                            placeholder="Password" 
+                            >
+                    </div>
+                    <div *ngIf="
+                                loginForm.get('password')?.invalid &&
+                                loginForm.get('password')?.errors &&
+                                (loginForm.get('password')?.dirty ||
+                                loginForm.get('password')?.touched)">
+                                <span
+                                    class="text-danger"
+                                    *ngIf="loginForm.get('password').hasError('required')">
+                                    Password is required.
+                                </span>
+                                <span class="text-danger" *ngIf="loginForm.get('password').hasError('minlength')">
+                                  Password should be at least 6 characters.
+                                </span>
+                                <span class="text-danger" *ngIf="loginForm.get('password').hasError('maxlength')">
+                                  Password should be less than 15 characters.
+                                </span>
+                        </div>
+                </div>
+                  <button type="submit">Login</button>   
+				</form>
+                 <button type="submit">Sign up</button>
+			</div>
+	</div>
+</div>

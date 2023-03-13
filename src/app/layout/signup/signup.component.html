@@ -1,10 +1,9 @@
 <div class="body"> 
 	<div class="main">  	
-		<input type="checkbox" id="chk" aria-hidden="true">
-
-			<div class="signup">
-				<form [formGroup]="signupForm">
-                     <label for="chk" aria-hidden="true">Sign up</label>
+		<!-- <input type="checkbox" id="chk" aria-hidden="true"> -->
+            <h3 class="title"><b>Signup</b></h3>
+			<div class="signup">   
+				<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
                 <div> 
                         <div> 
                             <input 
@@ -37,7 +36,7 @@
                             formControlName="email" 
                             name="email" 
                             class="form-control form-control-sm" 
-                            placeholder="Email" required="">
+                            placeholder="Email">
                     </div>
                     <div *ngIf="
                                 signupForm.get('email')?.invalid &&
@@ -60,7 +59,7 @@
                             name="address" 
                             class="form-control form-control-sm" 
                             placeholder="Address" 
-                            required="">
+                            >
                     </div>
                     <div *ngIf="
                                 signupForm.get('address')?.invalid &&
@@ -82,7 +81,7 @@
                                 name="mobile" 
                                 class="form-control form-control-sm" 
                                 placeholder="Mobile" 
-                                required="">
+                                >
                         </div>
                         <div *ngIf="
                                 signupForm.get('mobile')?.invalid &&
@@ -110,7 +109,7 @@
                             name="password" 
                             class="form-control form-control-sm" 
                             placeholder="Password" 
-                            required="">
+                            >
                     </div>
                     <div *ngIf="
                                 signupForm.get('password')?.invalid &&
@@ -134,7 +133,7 @@
                             name="role" 
                             class="form-control form-control-sm" 
                             placeholder="Role" 
-                            required="">
+                            >
                     </div>
                     <div *ngIf="
                                 signupForm.get('role')?.invalid &&
@@ -149,11 +148,12 @@
                         
                     </div>
                 </div>
-					<button>Sign up</button>
+					<button type="submit">Sign up</button>
 				</form>
+                <button type="submit">Login</button>
 			</div>
 
-			<div class="login">
+			<!-- <div class="login">
 				<form [formGroup]="loginForm">
 					<label for="chk" aria-hidden="true">Login</label>
                     <div> 
@@ -202,6 +202,6 @@
                     </div>
 					<button>Login</button>
 				</form>
-			</div>
+			</div> -->
 	</div>
 </div>
