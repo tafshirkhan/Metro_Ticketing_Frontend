@@ -1,86 +1,207 @@
+<div class="body"> 
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
 
-<div class="background">
-    <div class="shape"></div>
-    <div class="shape"></div>
-</div>
-<div> 
-    <form>
-        <h3>Signup Here</h3>
-        <div> 
-            <label class="form-control-label">
-                Name<span class="text-danger">*</span>
-            </label>
-            <input
-                formControlName="name"
-                name="name"
-                type="text"
-                class="form-control form-control-sm"
-                placeholder="User name"/>
-        </div>
+			<div class="signup">
+				<form [formGroup]="signupForm">
+                     <label for="chk" aria-hidden="true">Sign up</label>
+                <div> 
+                        <div> 
+                            <input 
+                                type="text" 
+                                formControlName="name" 
+                                name="txt" placeholder="Name"
+                                class="form-control form-control-sm">
+                        </div>
+                        <div *ngIf="
+                                signupForm.get('name')?.invalid &&
+                                signupForm.get('name')?.errors &&
+                                (signupForm.get('name')?.dirty ||
+                                signupForm.get('name')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('name').hasError('required')">
+                                Name is required.
+                            </span>
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('name').hasError('pattern')">
+                                No special characters are allowed.
+                            </span>
+                    </div>
+                </div>
 
-        <div> 
-            <label class="form-control-label">
-                Email<span class="text-danger">*</span>
-            </label>
-            <input
-                formControlName="email"
-                name="email"
-                type="text"
-                class="form-control form-control-sm"
-                placeholder="Email"/>
-        </div>
+                <div> 
+                    <div>
+                         <input type="text" 
+                            formControlName="email" 
+                            name="email" 
+                            class="form-control form-control-sm" 
+                            placeholder="Email" required="">
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('email')?.invalid &&
+                                signupForm.get('email')?.errors &&
+                                (signupForm.get('email')?.dirty ||
+                                signupForm.get('email')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('email').hasError('required')">
+                                Email is required.
+                            </span>
+                    </div>
+                </div>
 
-        <div> 
-            <label class="form-control-label">
-                Address<span class="text-danger">*</span>
-            </label>
-            <input
-                formControlName="address"
-                name="address"
-                type="text"
-                class="form-control form-control-sm"
-                placeholder="Address"/>
-        </div>
+                <div> 
+                    <div>
+                        <input 
+                            type="text" 
+                            formControlName="address" 
+                            name="address" 
+                            class="form-control form-control-sm" 
+                            placeholder="Address" 
+                            required="">
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('address')?.invalid &&
+                                signupForm.get('address')?.errors &&
+                                (signupForm.get('address')?.dirty ||
+                                signupForm.get('address')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('address').hasError('required')">
+                                Email is required.
+                            </span>
+                    </div>
+                </div>
+                <div> 
+                        <div>
+                            <input 
+                                type="text" 
+                                formControlName="mobile" 
+                                name="mobile" 
+                                class="form-control form-control-sm" 
+                                placeholder="Mobile" 
+                                required="">
+                        </div>
+                        <div *ngIf="
+                                signupForm.get('mobile')?.invalid &&
+                                signupForm.get('mobile')?.errors &&
+                                (signupForm.get('mobile')?.dirty ||
+                                signupForm.get('mobile')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('mobile').hasError('required')">
+                                Mobile is required.
+                            </span>
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('mobile').hasError('pattern')">
+                                No special characters are allowed.
+                            </span>
+                        </div>
+                </div>
 
-        <div> 
-            <label class="form-control-label">
-                Mobile<span class="text-danger">*</span>
-            </label>
-            <input
-                formControlName="mobile"
-                name="mobile"
-                type="text"
-                class="form-control form-control-sm"
-                placeholder="Mobile"/>
-        </div>
+                <div> 
+                    <div>
+                        <input 
+                            type="password" 
+                            formControlName="password" 
+                            name="password" 
+                            class="form-control form-control-sm" 
+                            placeholder="Password" 
+                            required="">
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('password')?.invalid &&
+                                signupForm.get('password')?.errors &&
+                                (signupForm.get('password')?.dirty ||
+                                signupForm.get('password')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('password').hasError('required')">
+                                Password is required.
+                            </span>
+                        
+                    </div>
+                </div>
 
-        <div> 
-            <label class="form-control-label">
-                Password<span class="text-danger">*</span>
-            </label>
-            <input
-                formControlName="password"
-                name="password"
-                type="password"
-                class="form-control form-control-sm"
-                placeholder="Password"/>
-        </div>
+                <div> 
+                    <div>
+                         <input 
+                            type="text" 
+                            formControlName="role" 
+                            name="role" 
+                            class="form-control form-control-sm" 
+                            placeholder="Role" 
+                            required="">
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('role')?.invalid &&
+                                signupForm.get('role')?.errors &&
+                                (signupForm.get('role')?.dirty ||
+                                signupForm.get('role')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('role').hasError('required')">
+                                Role is required.
+                            </span>
+                        
+                    </div>
+                </div>
+					<button>Sign up</button>
+				</form>
+			</div>
 
-        <div> 
-            <label class="form-control-label">
-                Role<span class="text-danger">*</span>
-            </label>
-            <input
-                formControlName="role"
-                name="Role"
-                type="text"
-                class="form-control form-control-sm"
-                placeholder="Role"/>
-        </div>
-        <button>Sign up</button>
-        <div class="social">
-          <div class="go"><i class="fab fa-google"></i> Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i>Facebook</div>
-        </div>
-    </form>
+			<div class="login">
+				<form [formGroup]="loginForm">
+					<label for="chk" aria-hidden="true">Login</label>
+                    <div> 
+                        <div>
+                            <input type="text" 
+                                formControlName="email" 
+                                name="email" 
+                                class="form-control form-control-sm" 
+                                placeholder="Email" required="">
+                        </div>
+                        <div *ngIf="
+                                    loginForm.get('email')?.invalid &&
+                                    loginForm.get('email')?.errors &&
+                                    (loginForm.get('email')?.dirty ||
+                                    loginForm.get('email')?.touched)">
+                                <span
+                                    class="text-danger"
+                                    *ngIf="loginForm.get('email').hasError('required')">
+                                    Email is required.
+                                </span>
+                        </div>
+                     </div>
+
+					<div> 
+                        <div>
+                            <input 
+                                type="password" 
+                                formControlName="password" 
+                                name="password" 
+                                class="form-control form-control-sm" 
+                                placeholder="Password" 
+                                required="">
+                        </div>
+                        <div *ngIf="
+                                    loginForm.get('password')?.invalid &&
+                                    loginForm.get('password')?.errors &&
+                                    (loginForm.get('password')?.dirty ||
+                                    loginForm.get('password')?.touched)">
+                                <span
+                                    class="text-danger"
+                                    *ngIf="loginForm.get('password').hasError('required')">
+                                    Password is required.
+                                </span>
+                            
+                        </div>
+                    </div>
+					<button>Login</button>
+				</form>
+			</div>
+	</div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit{
+  signupForm: FormGroup;
+  loginForm: FormGroup;
 
   constructor(
     private Router: ActivatedRoute,
@@ -16,7 +18,65 @@ export class SignupComponent implements OnInit{
   ) {
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.signupForm = this.getSignUpFormGroup();
+    this.loginForm = this.getLoginFormGroup();
+  }
+
+  getLoginFormGroup() {
+    return this.formBuilder.group({
+      email: ['',
+        [
+          Validators.required
+        ]
+      ],
+      password: ['',
+        [
+          Validators.required
+        ]
+      ],
+    })
+  }
+  
+  getSignUpFormGroup() {
+    return this.formBuilder.group({
+      userId: [''],
+      name: ['',
+        [
+          Validators.required,
+          Validators.pattern('[a-zA-Z0-9 ]*'),
+          Validators.minLength(4),
+          Validators.maxLength(10),
+        ]
+      ],
+      email: ['',
+        [
+          Validators.required
+        ]
+      ],
+      address: ['',
+        [
+          Validators.required
+        ]
+      ],
+      mobile: ['',
+        [
+          Validators.required,
+          Validators.pattern('[0-9 ]*'),
+          Validators.minLength(11),
+          Validators.maxLength(11),
+        ]
+      ],
+      password: ['',
+        [
+          Validators.required
+        ]
+      ],
+      role: ['',
+        [
+          Validators.required
+        ]
+      ]
+    })
   }
 
 }
