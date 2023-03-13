@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit{
         }
         else {
           this.isUserValid = true;
-          alert("Welcome to the dashboard");
+          //alert("Welcome to the dashboard");
+          this.router.navigate(['admin-dashboard']);
         }
         
       });

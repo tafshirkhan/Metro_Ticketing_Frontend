@@ -5,7 +5,12 @@ import { faDashboard,
   faBox,
   faMoneyBill,
   faChartBar,
+  faTrain,
+  faPerson,
+  faChair,
   faContactBook,
+  faPeopleGroup,
+  faBookmark,
   faHand, } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -18,9 +23,14 @@ export class SideNavComponent {
   faLocation = faLocation;
   faShop = faShop;
   faBox = faBox;
+  faTrain = faTrain;
   faMoneyBill = faMoneyBill;
   faChartBar = faChartBar;
   faContactBook = faContactBook;
   faHand = faHand;
+  faPerson = faPerson;
+  faChair = faChair;
+  faPeopleGroup = faPeopleGroup;
+  faBookmark = faBookmark;
 
 }
