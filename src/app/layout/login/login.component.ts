@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/Auth/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -52,8 +53,8 @@ export class LoginComponent implements OnInit{
         }
         else {
           this.isUserValid = true;
-          //alert("Welcome to the dashboard");
-          this.router.navigate(['admin-dashboard']);
+          this.authService.setToken(res);
+          //this.router.navigate(['admin-dashboard']);
         }
         
       });
