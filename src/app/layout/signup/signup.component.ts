@@ -63,7 +63,9 @@ export class SignupComponent implements OnInit{
       ]
     })
   }
-
+  goToLoginPage(pageName: string) {
+    this.router.navigate([`${pageName}`])
+  }
   onSubmit() {
     console.log(this.signupForm);
     if (this.signupForm.valid) {
