@@ -1,0 +1,265 @@
+<c-card>
+  <c-card-header><b>Add new train</b></c-card-header>
+  <c-card-body>
+    <form [formGroup]="trainForm" (ngSubmit)="onSubmit()">
+      <div> 
+        <c-row>
+            <c-col [xs]>
+              <label class="form-control-label">Train Name<span class="text-danger">*</span></label>
+              <input
+                  formControlName="name"
+                  name="name"
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Train name"
+                />
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    trainForm.get('name')?.invalid &&
+                    trainForm.get('name')?.errors &&
+                    (trainForm.get('name')?.dirty ||
+                      trainForm.get('name')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="trainForm.get('name').hasError('required')"
+                  >
+                    Name is required.
+                  </span>
+                </div>
+            </c-col>
+            <c-col [xs]>
+              <label class="form-control-label">Total distance<span class="text-danger">*</span></label>
+              <input
+                  formControlName="distance"
+                  name="distance"
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Total distance"
+                />
+
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    trainForm.get('distance')?.invalid &&
+                    trainForm.get('distance')?.errors &&
+                    (trainForm.get('distance')?.dirty ||
+                      trainForm.get('distance')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="trainForm.get('distance').hasError('required')"
+                  >
+                    Total distance is required.
+                  </span>
+                </div>
+            </c-col>
+        </c-row>
+      </div>
+
+      <div> 
+        <c-row>
+            <c-col [xs]>
+              <label class="form-control-label">Arrival Time<span class="text-danger">*</span></label>
+              <input
+                  formControlName="arrivalTime"
+                  name="arrivalTime"
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Arrival time"
+                />
+
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    trainForm.get('arrivalTime')?.invalid &&
+                    trainForm.get('arrivalTime')?.errors &&
+                    (trainForm.get('arrivalTime')?.dirty ||
+                      trainForm.get('arrivalTime')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="trainForm.get('arrivalTime').hasError('required')"
+                  >
+                    Arrival Time is required.
+                  </span>
+                </div>
+            </c-col>
+            <c-col [xs]>
+              <label class="form-control-label">Departure Time<span class="text-danger">*</span></label>
+              <input
+                  formControlName="departureTime"
+                  name="departureTime"
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Departure time"
+                />
+
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    trainForm.get('departureTime')?.invalid &&
+                    trainForm.get('departureTime')?.errors &&
+                    (trainForm.get('departureTime')?.dirty ||
+                      trainForm.get('departureTime')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="trainForm.get('departureTime').hasError('required')"
+                  >
+                    Departure time is required.
+                  </span>
+                </div>
+            </c-col>
+        </c-row>
+      </div>
+
+      <div> 
+        <c-row>
+            <c-col [xs]>
+              <label class="form-control-label">Arrival Date<span class="text-danger">*</span></label>
+              <input
+                  formControlName="arrivalDate"
+                  name="arrivalDate"
+                  type="date"
+                  class="form-control form-control-sm"
+                  placeholder="Arrival date"
+                />
+
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    trainForm.get('arrivalDate')?.invalid &&
+                    trainForm.get('arrivalDate')?.errors &&
+                    (trainForm.get('arrivalDate')?.dirty ||
+                      trainForm.get('arrivalDate')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="trainForm.get('arrivalDate').hasError('required')"
+                  >
+                    Arrival date is required.
+                  </span>
+                </div>
+            </c-col>
+            <c-col [xs]>
+              <label class="form-control-label">Departure Date<span class="text-danger">*</span></label>
+              <input
+                  formControlName="departureDate"
+                  name="departureDate"
+                  type="date"
+                  class="form-control form-control-sm"
+                  placeholder="Departure date"
+                />
+
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    trainForm.get('departureDate')?.invalid &&
+                    trainForm.get('departureDate')?.errors &&
+                    (trainForm.get('departureDate')?.dirty ||
+                      trainForm.get('departureDate')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="trainForm.get('departureDate').hasError('required')"
+                  >
+                    Departure date is required.
+                  </span>
+                </div>
+            </c-col>
+        </c-row>
+      </div>
+
+      <div> 
+        <c-row>
+            <c-col [xs]>
+              <label class="form-control-label">Arrival Station<span class="text-danger">*</span></label>
+              <input
+                  formControlName="arrivalStation"
+                  name="arrivalStation"
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Arrival station"
+                />
+
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    trainForm.get('arrivalStation')?.invalid &&
+                    trainForm.get('arrivalStation')?.errors &&
+                    (trainForm.get('arrivalStation')?.dirty ||
+                      trainForm.get('arrivalStation')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="trainForm.get('arrivalStation').hasError('required')"
+                  >
+                    Arrival station is required.
+                  </span>
+                </div>
+            </c-col>
+            <c-col [xs]>
+              <label class="form-control-label">Departure Station<span class="text-danger">*</span></label>
+              <input
+                  formControlName="departureStation"
+                  name="departureStation"
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Departure station"
+                />
+
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    trainForm.get('departureStation')?.invalid &&
+                    trainForm.get('departureStation')?.errors &&
+                    (trainForm.get('departureStation')?.dirty ||
+                      trainForm.get('departureStation')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="trainForm.get('departureStation').hasError('required')"
+                  >
+                    Departure station is required.
+                  </span>
+                </div>
+            </c-col>
+        </c-row>
+      </div>
+
+      <div> 
+        <c-row>
+            <c-col [xs]>
+              <div> 
+                 <label class="form-control-label">Status<span class="text-danger"></span></label>
+              </div>
+              <div> 
+              <label class="switch">
+                  <input
+                    formControlName="isActive"
+                    name="isActive"
+                    cFormCheckInput
+                    type="checkbox"
+                  />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </c-col>
+        </c-row>
+      </div>
+      <div>
+        <button cButton color="success" type="submit">Submit</button>
+      </div>
+    </form>
+  </c-card-body>
+</c-card>

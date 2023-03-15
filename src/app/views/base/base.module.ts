@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // CoreUI Modules
 import {
@@ -53,8 +53,30 @@ import { TabsComponent } from './tabs/tabs.component';
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
 import { TrainListComponent } from './train-list/train-list.component';
+import { AddTrainComponent } from './add-train/add-train.component';
+import { EditTrainComponent } from './edit-train/edit-train.component';
 
 @NgModule({
+  declarations: [
+    AccordionsComponent,
+    BreadcrumbsComponent,
+    CardsComponent,
+    CarouselsComponent,
+    CollapsesComponent,
+    ListGroupsComponent,
+    NavsComponent,
+    PaginationsComponent,
+    PopoversComponent,
+    ProgressComponent,
+    SpinnersComponent,
+    TablesComponent,
+    TooltipsComponent,
+    TabsComponent,
+    PlaceholdersComponent,
+    TrainListComponent,
+    AddTrainComponent,
+    EditTrainComponent,
+  ],
   imports: [
     CommonModule,
     BaseRoutingModule,
@@ -84,24 +106,6 @@ import { TrainListComponent } from './train-list/train-list.component';
     PopoverModule,
     TableModule,
     DocsComponentsModule,
-  ],
-  declarations: [
-    AccordionsComponent,
-    BreadcrumbsComponent,
-    CardsComponent,
-    CarouselsComponent,
-    CollapsesComponent,
-    ListGroupsComponent,
-    NavsComponent,
-    PaginationsComponent,
-    PopoversComponent,
-    ProgressComponent,
-    SpinnersComponent,
-    TablesComponent,
-    TooltipsComponent,
-    TabsComponent,
-    PlaceholdersComponent,
-    TrainListComponent,
   ],
 })
 export class BaseModule {}

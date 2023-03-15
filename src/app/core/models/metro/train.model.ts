@@ -7,6 +7,6 @@ export interface Train{
     departureDate: Date,
     arrivalStation: string,
     departureStation: string,
-    "distance": number,
+    distance: number,
     isActive: boolean
 }

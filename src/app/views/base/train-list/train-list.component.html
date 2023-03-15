@@ -1,4 +1,4 @@
-<button style="margin-bottom: 5px;" cButton color="primary">Add New</button>
+<button style="margin-bottom: 5px;" cButton color="primary" (click)="goToNextPage('/base/add-train')">Add New</button>
 <c-card>
   <c-card-header><b>List of Train</b></c-card-header>
   <c-card-body>
@@ -8,15 +8,48 @@
                 <th scope="col">Train Name</th>
                 <th scope="col">From Station</th>
                 <th scope="col">To Station</th>
+                <th scope="col">Status</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
-        <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+        <tbody *ngIf="allTrain?.length != 0">
+                <tr *ngFor="let item of allTrain">
+                    <td>{{item.name}}</td>
+                    <td>{{item.arrivalStation}}</td>
+                    <td>{{item.departureStation}}</td>
+                    <td>
+                      {{ item.isActive == 1 ? "Active" : "In-Active" }}
+                   </td>
+                   <td class="text-center">
+                <button
+                  class="ang-btn-edit ang-icon-btn"
+                  cButton
+                  color="success"
+                  variant="outline"
+                  title="edit">
+                  <svg
+                    cIcon
+                    name="cilPencil"
+                    class="ang-icon-edit"
+                    size="sm"
+                  ></svg>
+                </button>
+                <button
+                  class="ang-icon-btn"
+                  cButton
+                  color="danger"
+                  variant="outline"
+                  title="delete"
+                >
+                  <svg
+                    cIcon
+                    name="cilTrash"
+                    class="ang-icon-delete"
+                    size="sm"
+                    (click)="deleteTrain(item.id)"
+                  ></svg>
+                </button>
+              </td>
                 </tr>
         </tbody>
 </table>
