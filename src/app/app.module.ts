@@ -9,7 +9,10 @@ import {
   PerfectScrollbarConfigInterface,
   PerfectScrollbarModule,
 } from 'ngx-perfect-scrollbar';
-
+//Toast mesage
+import { ToastrModule } from 'ngx-toastr';
+//Sweet alert 2
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
 
@@ -22,7 +25,9 @@ import {
   DefaultHeaderComponent,
   DefaultLayoutComponent,
 } from './containers';
-import {TrainService} from './services/train.service'
+import { TrainService } from './services/train.service';
+import { NotificationsService } from './services/notifications.service';
+
 import {
   AvatarModule,
   BadgeModule,
@@ -61,6 +66,7 @@ const APP_CONTAINERS = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    SweetAlert2Module,
     AppRoutingModule,
     AvatarModule,
     BreadcrumbModule,
@@ -86,7 +92,8 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {
@@ -99,7 +106,8 @@ const APP_CONTAINERS = [
     },
     IconSetService,
     Title,
-    TrainService
+    TrainService,
+    NotificationsService
   ],
   bootstrap: [AppComponent],
 })

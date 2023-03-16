@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Train } from 'src/app/core/models/metro/train.model';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { TrainService } from 'src/app/services/train.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class AddSeatComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private trainService: TrainService,
+    private notifyService: NotificationsService
   ) { 
   }
 
@@ -50,6 +52,7 @@ export class AddSeatComponent implements OnInit {
       this.trainService.saveSeat(this.seatForm.value).subscribe(res => {
         console.log(res);
         alert("Seat added successful");
+        this.notifyService.showSuccess("Seat added successfully")
         this.seatForm.reset();
         this.router.navigate(['/base/seat-list']);
       })

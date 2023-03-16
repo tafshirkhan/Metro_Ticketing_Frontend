@@ -30,6 +30,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/pages/pages.module').then((m) => m.PagesModule)
       },
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./views/user/user.module').then((m) => m.UserModule)
+      },
     ]
   },
   {

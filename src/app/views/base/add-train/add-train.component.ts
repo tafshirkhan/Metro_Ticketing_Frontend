@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { TrainService } from 'src/app/services/train.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-train',
@@ -17,6 +19,7 @@ export class AddTrainComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private trainService: TrainService,
+    private notifyService: NotificationsService
   ) {
     
   }
@@ -76,7 +79,8 @@ export class AddTrainComponent implements OnInit {
     if (this.trainForm.valid) {
       this.trainService.saveTrain(this.trainForm.value).subscribe(res => {
         console.log(res);
-        alert("Train added successful");
+        //alert("Train added successful");
+        this.notifyService.showSuccess("New train added successfully")
         this.trainForm.reset();
         this.router.navigate(['/base/train-list']);
       })

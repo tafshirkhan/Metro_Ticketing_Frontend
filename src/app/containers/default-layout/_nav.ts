@@ -81,6 +81,29 @@ export const navItems: INavData[] = [
   //   name: 'Extras'
   // },
   {
+    name: 'User',
+    url: '/user',
+    iconComponent: { name: 'cil-user' },
+    children: [
+      {
+        name: 'Train',
+        url: '/user/trains'
+      },
+      {
+        name: 'Register',
+        url: '/register'
+      },
+      {
+        name: 'Error 404',
+        url: '/404'
+      },
+      {
+        name: 'Error 500',
+        url: '/500'
+      }
+    ]
+  },
+  {
     name: 'Pages',
     url: '/login',
     iconComponent: { name: 'cil-star' },
