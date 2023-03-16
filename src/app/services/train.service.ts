@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
+import { Seat } from '../core/models/metro/seat.model';
 import { Train } from '../core/models/metro/train.model';
 
 @Injectable({
@@ -35,5 +36,16 @@ export class TrainService {
   // }
   updateTrain(data:any){
     return this.httpService.put<any>(this.baseURL+'Train/UpdateTrain',data);
+  }
+
+  //Seat
+  getAllSeat():Observable<Seat>{
+    return this.httpService.get<Seat>(this.baseURL+'Seat/GetAllSeats');
+  }
+  saveSeat(val: any) {
+    return this.httpService.post<any>(this.baseURL + 'Seat', val);
+  }
+  deleteSeat(id:number){
+    return this.httpService.delete<Seat>(this.baseURL + 'Seat/'+id);
   }
 }

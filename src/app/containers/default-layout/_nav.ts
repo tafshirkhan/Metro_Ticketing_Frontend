@@ -15,6 +15,10 @@ export const navItems: INavData[] = [
         url: '/base/train-list'
       },
       {
+        name: 'Seat',
+        url: '/base/seat-list'
+      },
+      {
         name: 'Breadcrumbs',
         url: '/base/breadcrumbs'
       },

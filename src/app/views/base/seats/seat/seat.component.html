@@ -1,0 +1,53 @@
+<button style="margin-bottom: 5px;" cButton color="primary" (click)="goToNextPage('/base/add-seat')">Add New</button>
+<c-card>
+  <c-card-header><b>Train seat</b></c-card-header>
+  <c-card-body>
+    <table cTable hover striped>
+        <thead>
+            <tr>
+                <th scope="col">Train Name</th>
+                <th scope="col">Total seat</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="allSeat?.length != 0">
+                <tr *ngFor="let item of allSeat">
+                    <td>
+                      {{item.trainName}}
+                    </td>
+                    <td>{{item.total}}</td>
+                   <td class="text-center">
+                <button
+                  class="ang-btn-edit ang-icon-btn"
+                  cButton
+                  color="success"
+                  variant="outline"
+                  title="edit">
+                  <svg
+                    cIcon
+                    name="cilPencil"
+                    class="ang-icon-edit"
+                    size="sm"
+                  ></svg>
+                </button>
+                <button
+                  class="ang-icon-btn"
+                  cButton
+                  color="danger"
+                  variant="outline"
+                  title="delete"
+                  (click)=" deleteSeat(item.seatId)"
+                >
+                  <svg
+                    cIcon
+                    name="cilTrash"
+                    class="ang-icon-delete"
+                    size="sm"
+                  ></svg>
+                </button>
+              </td>
+                </tr>
+        </tbody>
+</table>
+  </c-card-body>
+</c-card>

@@ -34,9 +34,9 @@ export class TrainListComponent implements OnInit {
   }
 
   getAllTrain(){
-  this.trainService.getAllTrains().subscribe(res=>{
-    this.allTrain = res;
-  })
+    this.trainService.getAllTrains().subscribe(res=>{
+      this.allTrain = res;
+    })
   }
   
   deleteTrain(id:number){

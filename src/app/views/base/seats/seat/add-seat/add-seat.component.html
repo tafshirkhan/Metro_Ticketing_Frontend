@@ -1,0 +1,67 @@
+<c-card>
+  <c-card-header><b>Add seat for train</b></c-card-header>
+  <c-card-body>
+    <form [formGroup]="seatForm" (ngSubmit)="onSubmit()">
+      <div> 
+        <c-row>
+            <c-col [xs]>
+              <label class="form-control-label">Train Name<span class="text-danger">*</span></label>
+              <select cSelect formControlName="trainId" id="trainId" class="form-select form-select-sm"
+                    aria-label="label select duration">
+                    <option [ngValue]="null">Select</option>
+                    <option *ngFor="let train of allTrain" [ngValue]="train.trainId">
+                      {{train.name}}
+                    </option>
+                  </select>
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    seatForm.get('trainId')?.invalid &&
+                    seatForm.get('trainId')?.errors &&
+                    (seatForm.get('trainId')?.dirty ||
+                      seatForm.get('trainId')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="seatForm.get('trainId').hasError('required')"
+                  >
+                   Select a train first.
+                  </span>
+                </div>
+            </c-col>
+            <c-col [xs]>
+              <label class="form-control-label">Total Seat<span class="text-danger">*</span></label>
+              <input
+                  formControlName="total"
+                  name="total"
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Total seat"
+                />
+
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    seatForm.get('total')?.invalid &&
+                    seatForm.get('total')?.errors &&
+                    (seatForm.get('total')?.dirty ||
+                      seatForm.get('total')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="seatForm.get('total').hasError('required')"
+                  >
+                    Total seat is required.
+                  </span>
+                </div>
+            </c-col>
+        </c-row>
+      </div>
+      <div style="margin-top: 5px;">
+        <button cButton color="success" type="submit">Submit</button>
+      </div>
+    </form>
+  </c-card-body>
+</c-card>
