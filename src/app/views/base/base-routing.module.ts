@@ -18,6 +18,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { PlaceholdersComponent } from './placeholders/placeholders.component';
 import { TrainListComponent } from './train-list/train-list.component';
 import { AddTrainComponent } from './add-train/add-train.component';
+import { EditTrainComponent } from './edit-train/edit-train.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: 'add-train',
         component: AddTrainComponent
+      },
+      {
+        path: 'edit-train',
+        component: EditTrainComponent
       },
       {
         path: 'accordion',

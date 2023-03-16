@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Train } from 'src/app/core/models/metro/train.model';
 import { TrainService } from 'src/app/services/train.service';
@@ -11,8 +11,11 @@ import { TrainService } from 'src/app/services/train.service';
 })
 export class TrainListComponent implements OnInit {
 
+  trainForm: FormGroup;
   public train: Train[] = [];
   allTrain: any;
+  id: number;
+  showUpdate !: boolean;
 
 
   constructor(
@@ -26,7 +29,6 @@ export class TrainListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllTrain();
   }
-
   goToNextPage(pageName:string):void {
     this.router.navigate([`${pageName}`]);
   }
@@ -37,13 +39,17 @@ export class TrainListComponent implements OnInit {
   })
   }
   
-  deleteTrain(id:any){
+  deleteTrain(id:number){
     this.trainService.deleteTrain(id).subscribe(data=>{
       console.log(data);
-      
-    });
-    
-  
-}
+      alert("Train deleted successful");
+      location.reload();
+    }); 
+  }
 
+  findTrain(id: number) {
+    this.trainService.findTrain(id).subscribe(data => {
+      console.log(data);
+    });
+  }
 }

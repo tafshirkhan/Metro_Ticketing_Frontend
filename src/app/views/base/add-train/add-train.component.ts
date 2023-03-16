@@ -16,7 +16,7 @@ export class AddTrainComponent implements OnInit {
     private Router: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private trainService: TrainService
+    private trainService: TrainService,
   ) {
     
   }
@@ -77,6 +77,8 @@ export class AddTrainComponent implements OnInit {
       this.trainService.saveTrain(this.trainForm.value).subscribe(res => {
         console.log(res);
         alert("Train added successful");
+        this.trainForm.reset();
+        this.router.navigate(['/base/train-list']);
       })
     }
   }

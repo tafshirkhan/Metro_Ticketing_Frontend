@@ -40,13 +40,13 @@
                   color="danger"
                   variant="outline"
                   title="delete"
+                  (click)="deleteTrain(item.trainId)"
                 >
                   <svg
                     cIcon
                     name="cilTrash"
                     class="ang-icon-delete"
                     size="sm"
-                    (click)="deleteTrain(item.id)"
                   ></svg>
                 </button>
               </td>
