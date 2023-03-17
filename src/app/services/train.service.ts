@@ -63,4 +63,12 @@ export class TrainService {
   addPassenger(val:any){
     return this.httpService.post<passenger>(this.baseURL +'Passenger/SavePassenger',val);
   }
+
+  calculatedTrainFare(trainId:number,passengerId:number,userId:number){
+    return this.httpService.get<any>(this.baseURL +'Booking/CalculateTotalFare?trainId='+trainId+'&passengerId='+passengerId+'&userId='+userId);
+  }
+
+  getPassengerById(id:number){
+    return this.httpService.get<Passenger>(this.baseURL +'Passenger/'+id);
+  }
 }

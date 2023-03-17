@@ -57,7 +57,7 @@ export class PassengerComponent implements OnInit{
           console.log(saveData);
           console.log(saveData.passengerName);
        
-        //this.router.navigateByUrl('/user/ticket-details');
+          this.router.navigateByUrl('/user/ticket-information');
       })
     }
 
@@ -76,6 +76,7 @@ export class PassengerComponent implements OnInit{
     //     var saveData = JSON.parse(jsonValue);
     //     console.log(saveData);
     //     console.log(saveData.passengerName);
+    //     this.router.navigateByUrl('/user/ticket-information');
     //   })
     // }
   }

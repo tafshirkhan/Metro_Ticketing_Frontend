@@ -1,1 +1,75 @@
-<p>ticket-info works!</p>
+<c-card>
+  <c-card-header><b>Ticket Information</b></c-card-header>
+  <c-card-body>
+        <h6 style="margin-top: 10px;"><b>Train Details</b></h6> 
+        <div> 
+            <table cTable hover striped>
+                <thead>
+                    <tr>
+                        <th  scope="col">Train Name</th>
+                        <th  scope="col">FStation</th>
+                        <th  scope="col">TStation</th>
+                        <th  scope="col">Arrival Date</th>
+                        <th  scope="col">Departure Date</th>
+                        <th  scope="col">Arrival Time</th>
+                        <th  scope="col">Departure Time</th>
+                    </tr>
+                </thead>
+                <tbody >
+                        <tr *ngIf="trainValue">
+                            <td>{{trainValue.name}}</td>
+                            <td>{{trainValue.arrivalStation}}</td>
+                            <td>{{trainValue.departureStation}}</td>
+                            <td>{{trainValue.arrivalDate}}</td>
+                            <td>{{trainValue.departureDate}}</td>
+                            <td>{{trainValue.arrivalTime}}</td>
+                            <td>{{trainValue.departureTime}}</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+                <div class="col">
+                    <h6 style="margin-top: 10px;"><b>Passenger Details</b></h6> 
+                        <div> 
+                            <table cTable hover striped>
+                                <thead>
+                                    <tr>
+                                        <th  scope="col">Passenger Name</th>
+                                        <th  scope="col">Age</th>
+                                        <th  scope="col">Gender</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                        <tr *ngIf="passengerValue">
+                                        <td>{{passengerValue.passengerName}}</td>
+                                        <td>{{passengerValue.age}}</td>
+                                        <td>{{passengerValue.gender}}</td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+
+                <div class="col">
+                    <h6 style="margin-top: 10px;"><b>Total Fare</b></h6> 
+                    <div> 
+                        <table cTable hover striped>
+                            <thead>
+                                <tr>
+                                    <th  scope="col">Fare</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                    <tr *ngIf="trainFare">
+                                        <td>{{trainFare.Fare|currency:'TAKA':'symbol-narrow'}}</td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+        <button style="margin-top: 5px;" cButton color="info">Payment</button>    
+  </c-card-body>
+</c-card>
