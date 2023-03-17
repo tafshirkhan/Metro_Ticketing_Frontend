@@ -54,6 +54,6 @@ export class TrainService {
     return this.httpService.get<Train>(this.baseURL +'Train/SearchTrain?arrivalStation='+arrival+'&departureStation='+depature+'&date='+date);
   }
   getTrainbyId(id:number){
-    return this.httpService.get<Train>(this.baseURL +'Train'+id)
+    return this.httpService.get<Train>(this.baseURL +'Train/'+id)
   }
 }

@@ -69,6 +69,8 @@ export class TrainComponent implements OnInit{
   getTrainById(id: number) {
     this.trainService.getTrainbyId(id).subscribe((res) => {
       console.log(res);
+      console.log(res.trainId);
+      this.router.navigateByUrl('/user/passenger');
 
     })
   }
