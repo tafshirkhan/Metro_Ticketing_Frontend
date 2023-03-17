@@ -1,6 +1,7 @@
 <c-card>
-  <c-card-header><b>Add new train</b></c-card-header>
+  <c-card-header><b>Search a train</b></c-card-header>
   <c-card-body>
+    <div>
     <form [formGroup]="trainForm">
       <div> 
         <c-row>
@@ -47,5 +48,45 @@
         <button style="margin-top: 5px;" cButton color="success" type="submit">Search</button>
       </div>
     </form>
+    </div>
+
+    <h6 style="margin-top: 10px;"><b>Available Trains</b></h6> 
+    <div> 
+        <table cTable hover striped>
+        <thead>
+            <tr>
+                <th  scope="col">Name</th>
+                <th  scope="col">From Station</th>
+                <th  scope="col">To Station</th>
+                <th  scope="col">Arrival Date</th>
+                <th  scope="col">Departure Date</th>
+                <th  scope="col">Arrival Time</th>
+                <th  scope="col">Departure Time</th>
+                <th  scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody >
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                   <td class="text-center">
+                <button
+                  class="ang-btn-edit ang-icon-btn"
+                  cButton
+                  color="success"
+                  variant="outline"
+                  title="book now">Book now
+                </button>
+              </td>
+                </tr>
+        </tbody>
+</table>
+
+    </div>
   </c-card-body>
 </c-card>
