@@ -35,6 +35,7 @@ import { DocsComponentsModule } from '@docs-components/docs-components.module';
 import { TrainComponent } from './train/train.component';
 import { PassengerComponent } from './passenger/passenger.component';
 import { TicketInfoComponent } from './ticket-info/ticket-info.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 
 
@@ -43,6 +44,7 @@ import { TicketInfoComponent } from './ticket-info/ticket-info.component';
     TrainComponent,
     PassengerComponent,
     TicketInfoComponent,
+    TransactionComponent,
   ],
   imports: [
     CommonModule,

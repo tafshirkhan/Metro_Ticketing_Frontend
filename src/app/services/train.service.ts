@@ -71,4 +71,11 @@ export class TrainService {
   getPassengerById(id:number){
     return this.httpService.get<Passenger>(this.baseURL +'Passenger/'+id);
   }
+
+  getBookingPassengerId(passengerId:number){
+    return this.httpService.get<any>(this.baseURL +'Booking/BookingByPassenger/'+passengerId);
+  }
+  confirmBooking(bookingId:any){
+    return this.httpService.get<any>(this.baseURL+'Booking/ConfirmBooking'+bookingId);
+  }
 }
