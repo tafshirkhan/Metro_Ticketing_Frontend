@@ -47,20 +47,17 @@ export class PassengerComponent implements OnInit{
 
     if (this.passengerForm.valid) {
       this.trainService.addPassenger(this.passengerForm.value).subscribe(res => {
-        
-        alert("Passenger details has been added");
-        console.log(res);
-
-        // this.notifyService.showSuccess("Passenger details has been added");
-        // localStorage.setItem("Passenger", JSON.stringify(res));
-        // console.log(localStorage);
-        // var getValue = localStorage.getItem("passengers") as string;
-        // console.log(getValue);
-        // var saveData = JSON.parse(getValue);
-        // console.log(saveData);
-        // console.log(saveData.passengerName);
+          console.log(res);
+          alert("Passenger details has been added");
+          localStorage.setItem("passengers", JSON.stringify(res));
+          console.log(localStorage);
+          var jsonValue = localStorage.getItem("passengers") as string;
+          console.log(jsonValue);
+          var saveData = JSON.parse(jsonValue);
+          console.log(saveData);
+          console.log(saveData.passengerName);
        
-        this.router.navigateByUrl('/user/ticket-details');
+        //this.router.navigateByUrl('/user/ticket-details');
       })
     }
 

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 import { Seat } from '../core/models/metro/seat.model';
 import { Train } from '../core/models/metro/train.model';
+import { passenger } from '../core/models/metro/passenger.model';
 import { Passenger } from '../core/models/metro/passenger.model';
 
 @Injectable({
@@ -60,6 +61,6 @@ export class TrainService {
 
   //Passenger
   addPassenger(val:any){
-    return this.httpService.post<Passenger>(this.baseURL +'Passenger/SavePassenger',val);
+    return this.httpService.post<passenger>(this.baseURL +'Passenger/SavePassenger',val);
   }
 }

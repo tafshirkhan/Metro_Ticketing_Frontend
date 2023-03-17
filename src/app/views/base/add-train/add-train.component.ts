@@ -82,7 +82,7 @@ export class AddTrainComponent implements OnInit {
         alert("Train added successful");
         //this.notifyService.showSuccess("New train added successfully")
         this.trainForm.reset();
-        this.router.navigate(['/base/train-list']);
+        //this.router.navigate(['/base/train-list']);
       })
     }
   }

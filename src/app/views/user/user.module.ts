@@ -34,13 +34,15 @@ import { IconModule } from '@coreui/icons-angular';
 import { DocsComponentsModule } from '@docs-components/docs-components.module';
 import { TrainComponent } from './train/train.component';
 import { PassengerComponent } from './passenger/passenger.component';
+import { TicketInfoComponent } from './ticket-info/ticket-info.component';
 
 
 
 @NgModule({
   declarations: [
     TrainComponent,
-    PassengerComponent
+    PassengerComponent,
+    TicketInfoComponent,
   ],
   imports: [
     CommonModule,
