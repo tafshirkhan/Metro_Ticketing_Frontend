@@ -34,7 +34,7 @@ const routes: Routes = [
         path: 'user',
         loadChildren: () =>
           import('./views/user/user.module').then((m) => m.UserModule)
-      },
+      }
     ]
   },
   {

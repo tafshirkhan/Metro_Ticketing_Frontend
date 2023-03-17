@@ -67,7 +67,6 @@ const APP_CONTAINERS = [
     BrowserModule,
     BrowserAnimationsModule,
     SweetAlert2Module,
-    AppRoutingModule,
     AvatarModule,
     BreadcrumbModule,
     FooterModule,
@@ -93,6 +92,7 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     HttpClientModule,
+    AppRoutingModule,
     ToastrModule.forRoot()
   ],
   providers: [

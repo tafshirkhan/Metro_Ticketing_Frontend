@@ -1,0 +1,51 @@
+<c-card>
+  <c-card-header><b>Add new train</b></c-card-header>
+  <c-card-body>
+    <form [formGroup]="trainForm">
+      <div> 
+        <c-row>
+            <c-col [xs]>
+              <label class="form-control-label">Form Station<span class="text-danger">*</span></label>
+              <input
+                  formControlName="arrivalStation"
+                  name="name"
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Train name"
+                />
+            </c-col>
+            <c-col [xs]>
+              <label class="form-control-label">To Station<span class="text-danger">*</span></label>
+              <input
+                  formControlName="departureStation"
+                  name="departureStation"
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Total distance"
+                />
+            </c-col>
+        </c-row>
+      </div>
+
+      <div> 
+        <c-row>
+            <c-col [xs]>
+              <label class="form-control-label">Journey Date<span class="text-danger">*</span></label>
+              <input
+                  formControlName="journeyDate"
+                  name="journeyDate"
+                  type="date"
+                  class="form-control form-control-sm"
+                  placeholder="Arrival date"
+                />
+            </c-col>
+            <c-col [xs]></c-col>
+        </c-row>
+      </div>
+
+      <div>
+        <button style="margin-top: 5px;" cButton color="success" type="submit">Search</button>
+      </div>
+    </form>
+  </c-card-body>
+</c-card>
