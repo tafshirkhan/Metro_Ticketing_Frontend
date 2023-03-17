@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
+import { Train } from 'src/app/core/models/metro/train.model';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { TrainService } from 'src/app/services/train.service';
 
@@ -11,6 +12,9 @@ import { TrainService } from 'src/app/services/train.service';
 })
 export class TrainComponent implements OnInit{
   trainForm: FormGroup;
+  public train: Train[] = [];
+  trainValue: any;
+  allTrain: any;
 
   constructor(
     private Router: ActivatedRoute,
@@ -23,6 +27,7 @@ export class TrainComponent implements OnInit{
   }
   ngOnInit(): void {
     this.trainForm = this.getTrainFormGroup();
+    this.getAllTrain();
   }
 
   getTrainFormGroup() {
@@ -37,8 +42,42 @@ export class TrainComponent implements OnInit{
           Validators.required
         ]
       ],
-      journeyDate:['']
+      date:['']
     })
   }
+
+  searchAnyTrain() {
+    this.trainService.searchTrain(
+      this.trainForm.value.arrivalStation,
+      this.trainForm.value.departureStation,
+      this.trainForm.value.date
+    )
+      .subscribe(res => {
+        console.log(res);
+        this.trainValue = res;
+        console.log(this.trainValue);
+        if (res == null || Object.keys(res).length === 0) {
+          alert("No train was found");
+        }
+        this.trainForm.reset();
+      },
+      error => {
+          alert("No train was found");
+      });
+  }
+
+  getTrainById(id: number) {
+    this.trainService.getTrainbyId(id).subscribe((res) => {
+      console.log(res);
+
+    })
+  }
+
+   getAllTrain(){
+    this.trainService.getAllTrains().subscribe(res=>{
+      this.allTrain = res;
+    })
+  }
+
 
 }

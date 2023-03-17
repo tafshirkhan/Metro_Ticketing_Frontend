@@ -7,23 +7,33 @@
         <c-row>
             <c-col [xs]>
               <label class="form-control-label">Form Station<span class="text-danger">*</span></label>
-              <input
+              <!-- <input
                   formControlName="arrivalStation"
                   name="name"
                   type="text"
                   class="form-control form-control-sm"
                   placeholder="Train name"
-                />
+                /> -->
+                <select formControlName="arrivalStation" class="form-control form-control-sm">  
+                    <option disabled>Select Arrival Station</option>  
+                    <option> Arrival Station</option>  
+                    <option  *ngFor="let item of allTrain">{{item.arrivalStation}}</option>  
+                </select>
             </c-col>
             <c-col [xs]>
               <label class="form-control-label">To Station<span class="text-danger">*</span></label>
-              <input
+              <!-- <input
                   formControlName="departureStation"
                   name="departureStation"
                   type="text"
                   class="form-control form-control-sm"
                   placeholder="Total distance"
-                />
+                /> -->
+                <select formControlName="departureStation" class="form-control form-control-sm">  
+                    <option disabled>Select Departure Station</option>  
+                    <option> Departure Station</option>  
+                    <option  *ngFor="let item of allTrain">{{item.departureStation}}</option>  
+                </select>
             </c-col>
         </c-row>
       </div>
@@ -33,8 +43,9 @@
             <c-col [xs]>
               <label class="form-control-label">Journey Date<span class="text-danger">*</span></label>
               <input
-                  formControlName="journeyDate"
-                  name="journeyDate"
+                  formControlName="date"
+                  name="date"
+                  id="date"
                   type="date"
                   class="form-control form-control-sm"
                   placeholder="Arrival date"
@@ -45,19 +56,19 @@
       </div>
 
       <div>
-        <button style="margin-top: 5px;" cButton color="success" type="submit">Search</button>
+        <button style="margin-top: 5px;" cButton color="success" type="submit" (click)="searchAnyTrain()">Search</button>
       </div>
     </form>
     </div>
 
     <h6 style="margin-top: 10px;"><b>Available Trains</b></h6> 
     <div> 
-        <table cTable hover striped>
+        <table cTable hover striped *ngIf="trainValue">
         <thead>
             <tr>
-                <th  scope="col">Name</th>
-                <th  scope="col">From Station</th>
-                <th  scope="col">To Station</th>
+                <th  scope="col">Train Name</th>
+                <th  scope="col">FStation</th>
+                <th  scope="col">TStation</th>
                 <th  scope="col">Arrival Date</th>
                 <th  scope="col">Departure Date</th>
                 <th  scope="col">Arrival Time</th>
@@ -66,14 +77,14 @@
             </tr>
         </thead>
         <tbody >
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr *ngFor="let train of trainValue">
+                    <td>{{train.trainName}}</td>
+                    <td>{{train.arrivalStation}}</td>
+                    <td>{{train.departureStation}}</td>
+                    <td>{{train.arrivalDate}}</td>
+                    <td>{{train.departureDate}}</td>
+                    <td>{{train.arrivalTime}}</td>
+                    <td>{{train.departureTime}}</td>
                    <td class="text-center">
                 <button
                   class="ang-btn-edit ang-icon-btn"

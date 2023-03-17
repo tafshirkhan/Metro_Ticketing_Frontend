@@ -48,4 +48,12 @@ export class TrainService {
   deleteSeat(id:number){
     return this.httpService.delete<Seat>(this.baseURL + 'Seat/'+id);
   }
+
+  //User train search
+  searchTrain(arrival:any,depature:any,date:any){
+    return this.httpService.get<Train>(this.baseURL +'Train/SearchTrain?arrivalStation='+arrival+'&departureStation='+depature+'&date='+date);
+  }
+  getTrainbyId(id:number){
+    return this.httpService.get<Train>(this.baseURL +'Train'+id)
+  }
 }
