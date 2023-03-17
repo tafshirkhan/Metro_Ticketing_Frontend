@@ -79,8 +79,8 @@ export class AddTrainComponent implements OnInit {
     if (this.trainForm.valid) {
       this.trainService.saveTrain(this.trainForm.value).subscribe(res => {
         console.log(res);
-        //alert("Train added successful");
-        this.notifyService.showSuccess("New train added successfully")
+        alert("Train added successful");
+        //this.notifyService.showSuccess("New train added successfully")
         this.trainForm.reset();
         this.router.navigate(['/base/train-list']);
       })

@@ -73,6 +73,7 @@
                 <th  scope="col">Departure Date</th>
                 <th  scope="col">Arrival Time</th>
                 <th  scope="col">Departure Time</th>
+                <th  scope="col">Seat</th>
                 <th  scope="col" class="text-center">Actions</th>
             </tr>
         </thead>
@@ -85,13 +86,14 @@
                     <td>{{train.departureDate}}</td>
                     <td>{{train.arrivalTime}}</td>
                     <td>{{train.departureTime}}</td>
+                    <td>{{train.total}}</td>
                    <td class="text-center">
                 <button
                   class="ang-btn-edit ang-icon-btn"
                   cButton
                   color="success"
                   variant="outline"
-                  title="book now" (click)="getTrainById(train.trainId)">Book now
+                  title="book now" (click)="getTrainById(train.trainId)">Get Ticket
                 </button>
               </td>
                 </tr>

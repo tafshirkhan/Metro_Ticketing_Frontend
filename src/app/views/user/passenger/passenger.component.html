@@ -2,7 +2,7 @@
   <c-card-header><b>Passenger Details</b></c-card-header>
   <c-card-body>
     <div>
-    <form [formGroup]="passengerForm">
+    <form [formGroup]="passengerForm" (ngSubmit)="onSubmit()">
       <div> 
         <c-row>
             <c-col [xs]>
@@ -14,6 +14,22 @@
                   class="form-control form-control-sm"
                   placeholder="Passenger name"
                 />
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    passengerForm.get('passengerName')?.invalid &&
+                    passengerForm.get('passengerName')?.errors &&
+                    (passengerForm.get('passengerName')?.dirty ||
+                      passengerForm.get('passengerName')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="passengerForm.get('passengerName').hasError('required')"
+                  >
+                    Name is required.
+                  </span>
+                </div>
             </c-col>
             <c-col [xs]>
               <label class="form-control-label">Age<span class="text-danger">*</span></label>
@@ -24,6 +40,22 @@
                   class="form-control form-control-sm"
                   placeholder="Age"
                 />
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    passengerForm.get('age')?.invalid &&
+                    passengerForm.get('age')?.errors &&
+                    (passengerForm.get('age')?.dirty ||
+                      passengerForm.get('age')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="passengerForm.get('age').hasError('required')"
+                  >
+                    Age is required.
+                  </span>
+                </div>
             </c-col>
         </c-row>
       </div>
@@ -40,13 +72,29 @@
                   class="form-control form-control-sm"
                   placeholder="Gender"
                 />
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    passengerForm.get('gender')?.invalid &&
+                    passengerForm.get('gender')?.errors &&
+                    (passengerForm.get('gender')?.dirty ||
+                      passengerForm.get('gender')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="passengerForm.get('gender').hasError('required')"
+                  >
+                    Gender is required.
+                  </span>
+                </div>
             </c-col>
             <c-col [xs]></c-col>
         </c-row>
       </div>
 
       <div>
-        <button style="margin-top: 5px;" cButton color="success" type="submit">Search</button>
+        <button style="margin-top: 5px;" cButton color="success" type="submit">Submit</button>
       </div>
     </form>
     </div>

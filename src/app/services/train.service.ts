@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 import { Seat } from '../core/models/metro/seat.model';
 import { Train } from '../core/models/metro/train.model';
+import { Passenger } from '../core/models/metro/passenger.model';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,10 @@ export class TrainService {
   }
   getTrainbyId(id:number){
     return this.httpService.get<Train>(this.baseURL +'Train/'+id)
+  }
+
+  //Passenger
+  addPassenger(val:any){
+    return this.httpService.post<Passenger>(this.baseURL +'Passenger/SavePassenger',val);
   }
 }
