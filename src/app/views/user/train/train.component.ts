@@ -15,6 +15,7 @@ export class TrainComponent implements OnInit{
   public train: Train[] = [];
   trainValue: any;
   allTrain: any;
+  trains: any;
 
   constructor(
     private Router: ActivatedRoute,
@@ -70,7 +71,7 @@ export class TrainComponent implements OnInit{
     this.trainService.getTrainbyId(id).subscribe((res) => {
       console.log(res);
       console.log(res.trainId);
-      localStorage.setItem('trainId',JSON.stringify(res));
+      localStorage.setItem('trains',JSON.stringify(res));
       this.router.navigateByUrl('/user/passenger');
 
     })

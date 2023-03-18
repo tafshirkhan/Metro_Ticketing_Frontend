@@ -1,8 +1,9 @@
+import { v4 as uuidv4 } from 'uuid';
 export interface Passenger{
-    passengerId:string
+    passengerId:uuidv4
     userId:string
     passengerName:string
-    age:number,
+    age:number
     gender:string
 }
 

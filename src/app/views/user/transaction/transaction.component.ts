@@ -43,7 +43,7 @@ export class TransactionComponent implements OnInit{
     var passengerData = localStorage.getItem('passengers');
     this.passengerId = JSON.parse(passengerData);
     this.passId = this.passengerId.passengerId;
-    console.log(this.passId);
+    //console.log(this.passId);
 
     this.trainService
       .getBookingPassengerId(this.passId)

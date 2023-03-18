@@ -1,0 +1,117 @@
+<c-card>
+  <c-card-header><b>Booking Ticket</b></c-card-header>
+  <c-card-body>
+    <div>
+    <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+      <div> 
+        <c-row>
+            <c-col [xs]>
+              <label class="form-control-label">Seat Number<span class="text-danger">*</span></label>
+              <input
+                  formControlName="seatNum"
+                  name="seatNum"
+                  type="number"
+                  class="form-control form-control-sm"
+                  placeholder="Seat number"
+                />
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    ticketForm.get('seatNum')?.invalid &&
+                    ticketForm.get('seatNum')?.errors &&
+                    (ticketForm.get('seatNum')?.dirty ||
+                      ticketForm.get('seatNum')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="ticketForm.get('seatNum').hasError('required')"
+                  >
+                    Name is required.
+                  </span>
+                </div>
+            </c-col>
+            <c-col [xs]>
+              <label class="form-control-label">Fare<span class="text-danger">*</span></label>
+              <input
+                  formControlName="fare"
+                  name="fare"
+                  type="number"
+                  class="form-control form-control-sm"
+                  placeholder="Fare"
+                />
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    ticketForm.get('fare')?.invalid &&
+                    ticketForm.get('fare')?.errors &&
+                    (ticketForm.get('fare')?.dirty ||
+                      ticketForm.get('fare')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="ticketForm.get('fare').hasError('required')"
+                  >
+                    Fare is required.
+                  </span>
+                </div>
+            </c-col>
+        </c-row>
+      </div>
+
+      <div> 
+        <c-row>
+            <c-col [xs]>
+              <label class="form-control-label">Date<span class="text-danger">*</span></label>
+              <input
+                  formControlName="date"
+                  name="date"
+                  type="date"
+                  class="form-control form-control-sm"
+                  placeholder="Date"
+                />
+
+                <div
+                  class="col-sm-12"
+                  *ngIf="
+                    ticketForm.get('date')?.invalid &&
+                    ticketForm.get('date')?.errors &&
+                    (ticketForm.get('date')?.dirty ||
+                      ticketForm.get('date')?.touched)
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="ticketForm.get('date').hasError('required')"
+                  >
+                    Date is required.
+                  </span>
+                </div>
+            </c-col>
+            <c-col [xs]>
+                <div> 
+                 <label class="form-control-label">Status<span class="text-danger"></span></label>
+              </div>
+              <div> 
+              <label class="switch">
+                  <input
+                    formControlName="isActive"
+                    name="isActive"
+                    cFormCheckInput
+                    type="checkbox"
+                  />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </c-col>
+        </c-row>
+      </div>
+
+      <div>
+        <button style="margin-top: 5px;" cButton color="success" type="submit">Submit</button>
+      </div>
+    </form>
+    </div>
+  </c-card-body>
+</c-card>

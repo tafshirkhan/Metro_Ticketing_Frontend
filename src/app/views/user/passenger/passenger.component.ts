@@ -57,7 +57,7 @@ export class PassengerComponent implements OnInit{
           console.log(saveData);
           console.log(saveData.passengerName);
        
-          this.router.navigateByUrl('/user/ticket-information');
+          this.router.navigateByUrl('/user/ticket-booking');
       })
     }
 

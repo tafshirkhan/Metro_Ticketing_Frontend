@@ -19,7 +19,7 @@ export class TicketInfoComponent implements OnInit {
   trainFare: any;
 
   passengerId: any;
-
+  passIdStatic: any;
   constructor(
     private Router: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -38,10 +38,13 @@ export class TicketInfoComponent implements OnInit {
     this.trainValue = JSON.parse(storageData);
     var passengerData = localStorage.getItem('passengers');
     this.passengerValue = JSON.parse(passengerData);
+    //this.passengerId = '858E4E49-1C44-485F-4A25-08DB2709C36A';
+    //this.passIdStatic = JSON.parse();
     //this.passengerId = this.passengerValue.passengerId;
 
     // this.trainService.calculatedTrainFare(
     //   this.trainValue.trainId,
+    //   //this.passengerValue.passengerId,
     //   this.passengerValue.passengerId,
     //   this.passengerValue.userId
     // ).subscribe((res) => {
@@ -49,6 +52,10 @@ export class TicketInfoComponent implements OnInit {
     //   console.log(res);
     //   localStorage.setItem('trainFare', JSON.stringify(res));
     // });
+  }
+
+  addTicket() {
+    
   }
 
   goForPayment() {

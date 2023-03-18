@@ -5,6 +5,7 @@ import { Seat } from '../core/models/metro/seat.model';
 import { Train } from '../core/models/metro/train.model';
 import { passenger } from '../core/models/metro/passenger.model';
 import { Passenger } from '../core/models/metro/passenger.model';
+import { booking, Booking } from '../core/models/metro/booking.model';
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +62,7 @@ export class TrainService {
 
   //Passenger
   addPassenger(val:any){
-    return this.httpService.post<passenger>(this.baseURL +'Passenger/SavePassenger',val);
+    return this.httpService.post<Passenger>(this.baseURL +'Passenger/SavePassenger',val);
   }
 
   calculatedTrainFare(trainId:number,passengerId:number,userId:number){
@@ -72,10 +73,13 @@ export class TrainService {
     return this.httpService.get<Passenger>(this.baseURL +'Passenger/'+id);
   }
 
+  addBooking(val:any){
+    return this.httpService.post<booking>(this.baseURL +'Booking/SaveBooking',val);
+  }
   getBookingPassengerId(passengerId:number){
     return this.httpService.get<any>(this.baseURL +'Booking/BookingByPassenger/'+passengerId);
   }
   confirmBooking(bookingId:any){
-    return this.httpService.get<any>(this.baseURL+'Booking/ConfirmBooking'+bookingId);
+    return this.httpService.get<any>(this.baseURL+'Booking/ConfirmBooking/'+bookingId);
   }
 }

@@ -36,6 +36,7 @@ import { TrainComponent } from './train/train.component';
 import { PassengerComponent } from './passenger/passenger.component';
 import { TicketInfoComponent } from './ticket-info/ticket-info.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { TicketBookingComponent } from './ticket-booking/ticket-booking.component';
 
 
 
@@ -45,6 +46,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     PassengerComponent,
     TicketInfoComponent,
     TransactionComponent,
+    TicketBookingComponent,
   ],
   imports: [
     CommonModule,
