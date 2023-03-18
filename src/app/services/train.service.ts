@@ -80,11 +80,15 @@ export class TrainService {
   addBooking(val:any){
     return this.httpService.post<booking>(this.baseURL +'Booking/SaveBooking',val);
   }
-  getBookingById(id:number){
-    return this.httpService.get<booking>(this.baseURL + 'Booking/'+id);
+  getAllBooking():Observable<booking>{
+    return this.httpService.get<booking>(this.baseURL +'Booking');
   }
+  getBookingById(id:number){
+    return this.httpService.get<Booking>(this.baseURL + 'Booking/'+id);
+  }
+  
   getBookingPassengerId(passengerId:number){
-    return this.httpService.get<any>(this.baseURL +'Booking/BookingByPassenger/'+passengerId);
+    return this.httpService.get<Passenger>(this.baseURL +'Booking/BookingByPassenger/'+passengerId);
   }
   confirmBooking(bookingId:any){
     return this.httpService.get<any>(this.baseURL+'Booking/ConfirmBooking/'+bookingId);

@@ -111,15 +111,16 @@
         <tbody >
                 <tr *ngFor="let passenger of passengerValue" >
                     <td>{{passenger.passengerName}}</td>
-                   <td class="text-center">
-                <button
-                  class="ang-btn-edit ang-icon-btn"
-                  cButton
-                  color="success"
-                  variant="outline"
-                  title="book now">Click to next
-                </button>
-              </td>
+                    <td class="text-center">
+                        <button
+                          class="ang-btn-edit ang-icon-btn"
+                          cButton
+                          color="success"
+                          variant="outline"
+                          title="cicl"
+                          (click)="getPassengerById(passenger.passengerId)">Click to next
+                        </button>
+                    </td>
                 </tr>
         </tbody>
 </table>

@@ -14,8 +14,13 @@ import { TrainService } from 'src/app/services/train.service';
 export class TicketBookingComponent implements OnInit {
 
   ticketForm: FormGroup;
-  userID!:any;
+  userId:any;
   trainId: any;
+  passengerId: any;
+  bookingValue: any;
+  singleBookingValue: any;
+  singleBook: any;
+
 
   bookingModel: booking = new booking();
   bookings: any;
@@ -30,13 +35,14 @@ export class TicketBookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.ticketForm = this.getTicketBookingForm();
+    this.getListOfBooking();
   }
 
   getTicketBookingForm() {
     return this.formBuilder.group({
       bookingId: [''],
-      passengerId: ['00000000-0000-0000-0000-000000000000'],
-      userId:['5F43C871-FA7A-4724-AD8E-08DB23A86637'],
+      //passengerId: ['00000000-0000-0000-0000-000000000000'],
+      //userId:['5F43C871-FA7A-4724-AD8E-08DB23A86637'],
       fare: ['', [Validators.required]],
       seatNum: ['', [Validators.required]],
       date: ['', [Validators.required]],
@@ -45,11 +51,6 @@ export class TicketBookingComponent implements OnInit {
     })
   }
 
-  // findPassenger(id: number) {
-  //   this.trainService.getPassengerById(id).subscribe(data => {
-  //     console.log(data);
-  //   });
-  // }
 
   getPassengerById(id: number) {
     this.trainService.getPassengerById(id).subscribe((res) => {
@@ -63,12 +64,17 @@ export class TicketBookingComponent implements OnInit {
 
   onSubmit() {
     if (this.ticketForm.valid) {
-      let user = localStorage.getItem("userId");
-      this.userID = JSON.parse(user);
+      //let user = localStorage.getItem("userId");
+      //this.userID = JSON.parse(user);
       let train = localStorage.getItem("trains");
       this.trainId = JSON.parse(train);
+      let passenger = localStorage.getItem("singlePass");
+      this.passengerId = JSON.parse(passenger);
+      let user = localStorage.getItem("singlePass");
+      this.userId = JSON.parse(user);
 
-      this.bookingModel.userId = this.userID;
+      this.bookingModel.userId = this.userId.userId;
+      this.bookingModel.passengerId = this.passengerId.passengerId;
       this.bookingModel.trainId = this.trainId.trainId;
       this.bookingModel.seatNum = this.ticketForm.value.seatNum;
       this.bookingModel.fare = this.ticketForm.value.fare;
@@ -82,6 +88,8 @@ export class TicketBookingComponent implements OnInit {
         .subscribe((res) => {
           console.log(res);
           alert("Ticket booking successful, please make payment for confirmation");
+          this.ticketForm.reset();
+          location.reload();
           localStorage.setItem("bookings", JSON.stringify(res));
           var json = localStorage.getItem("bookings") as string;
 
@@ -89,6 +97,24 @@ export class TicketBookingComponent implements OnInit {
           this.router.navigateByUrl('/user/ticket-information');
         });
     }
+  }
+
+  getListOfBooking() {
+    this.trainService.getAllBooking().subscribe(res => {
+      console.log(res);
+      this.bookingValue = res;
+    });
+  }
+
+  getBookingById(id: number) {
+    this.trainService.getBookingById(id).subscribe((res) => {
+      console.log(res);
+      console.log(res.bookingId);
+      this.singleBookingValue = res;
+      console.log(this.singleBookingValue);
+      localStorage.setItem('singleBook', JSON.stringify(res));
+      this.router.navigateByUrl('/user/ticket-information');
+    });
   }
 
 }

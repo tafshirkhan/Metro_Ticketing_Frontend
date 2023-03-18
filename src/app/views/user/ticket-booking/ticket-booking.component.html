@@ -113,5 +113,36 @@
       </div>
     </form>
     </div>
+
+
+    <h6 style="margin-top: 10px;"><b>Booking List</b></h6> 
+    <div> 
+        <table cTable hover striped *ngIf="bookingValue">
+        <thead>
+            <tr>
+                <th  scope="col">Booking Status</th>
+                <th  scope="col">Seat Number</th>
+                <th  scope="col" class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody >
+                <tr *ngFor="let booking of bookingValue" >
+                    <td>{{booking.status}}</td>
+                    <td>{{booking.seatNum}}</td>
+                    <td class="text-center">
+                        <button
+                          class="ang-btn-edit ang-icon-btn"
+                          cButton
+                          color="success"
+                          variant="outline"
+                          title="cicl"
+                          (click)=" getBookingById(booking.bookingId)">See details
+                        </button>
+                    </td>
+                </tr>
+        </tbody>
+</table>
+
+    </div>
   </c-card-body>
 </c-card>

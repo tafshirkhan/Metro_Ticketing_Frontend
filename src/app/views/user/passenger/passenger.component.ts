@@ -17,6 +17,8 @@ export class PassengerComponent implements OnInit{
   passengers: any;
   passenngerModel: passenger = new passenger();
   passengerValue: any;
+  singlePassengerValue: any;
+  singlePass: any;
 
   constructor(
     private Router: ActivatedRoute,
@@ -88,6 +90,18 @@ export class PassengerComponent implements OnInit{
     this.trainService.getAllPassenger().subscribe(res => {
       console.log(res);
       this.passengerValue = res;
+    })
+  }
+
+  getPassengerById(id: number) {
+    this.trainService.getPassengerById(id).subscribe((res) => {
+      console.log(res);
+      console.log(res.passengerId);
+      this.singlePassengerValue = res;
+      console.log(this.singlePassengerValue)
+      localStorage.setItem('singlePass',JSON.stringify(res));
+      this.router.navigateByUrl('/user/ticket-booking');
+
     })
   }
 
