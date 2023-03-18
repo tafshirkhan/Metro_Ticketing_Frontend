@@ -1,41 +1,335 @@
-<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+<!-- <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
   <c-container>
     <c-row class="justify-content-center">
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form cForm>
+            <form cForm [formGroup]="signupForm" (ngSubmit)="onSubmit()">
               <h1>Register</h1>
               <p class="text-medium-emphasis">Create your account</p>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
-                <input autoComplete="name" cFormControl placeholder="Username" />
+                <div> 
+                            <input 
+                                type="text" 
+                                formControlName="name" 
+                                name="txt" placeholder="Name"
+                                class="form-control form-control-sm">
+                        </div>
+                        <div *ngIf="
+                                signupForm.get('name')?.invalid &&
+                                signupForm.get('name')?.errors &&
+                                (signupForm.get('name')?.dirty ||
+                                signupForm.get('name')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('name').hasError('required')">
+                                Name is required.
+                            </span>
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('name').hasError('pattern')">
+                                No special characters are allowed.
+                            </span>
+                    </div>
               </c-input-group>
               <c-input-group class="mb-3">
                 <span cInputGroupText>@</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
+                <div>
+                         <input type="text" 
+                            formControlName="email" 
+                            name="email" 
+                            class="form-control form-control-sm" 
+                            placeholder="Email">
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('email')?.invalid &&
+                                signupForm.get('email')?.errors &&
+                                (signupForm.get('email')?.dirty ||
+                                signupForm.get('email')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('email').hasError('required')">
+                                Email is required.
+                            </span>
+                    </div>
               </c-input-group>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
+                <div>
+                        <input 
+                            type="text" 
+                            formControlName="address" 
+                            name="address" 
+                            class="form-control form-control-sm" 
+                            placeholder="Address" 
+                            >
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('address')?.invalid &&
+                                signupForm.get('address')?.errors &&
+                                (signupForm.get('address')?.dirty ||
+                                signupForm.get('address')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('address').hasError('required')">
+                                Email is required.
+                            </span>
+                    </div>
+              </c-input-group>
+
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <div>
+                            <input 
+                                type="text" 
+                                formControlName="mobile" 
+                                name="mobile" 
+                                class="form-control form-control-sm" 
+                                placeholder="Mobile" 
+                                >
+                        </div>
+                        <div *ngIf="
+                                signupForm.get('mobile')?.invalid &&
+                                signupForm.get('mobile')?.errors &&
+                                (signupForm.get('mobile')?.dirty ||
+                                signupForm.get('mobile')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('mobile').hasError('required')">
+                                Mobile is required.
+                            </span>
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('mobile').hasError('pattern')">
+                                No special characters are allowed.
+                            </span>
+                        </div>
               </c-input-group>
               <c-input-group class="mb-4">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
+                <div>
+                        <input 
+                            type="password" 
+                            formControlName="password" 
+                            name="password" 
+                            class="form-control form-control-sm" 
+                            placeholder="Password" 
+                            >
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('password')?.invalid &&
+                                signupForm.get('password')?.errors &&
+                                (signupForm.get('password')?.dirty ||
+                                signupForm.get('password')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('password').hasError('required')">
+                                Password is required.
+                            </span>
+                        
+                    </div>
+              </c-input-group>
+
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <div>
+                         <input 
+                            type="text" 
+                            formControlName="role" 
+                            name="role" 
+                            class="form-control form-control-sm" 
+                            placeholder="Role" 
+                            >
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('role')?.invalid &&
+                                signupForm.get('role')?.errors &&
+                                (signupForm.get('role')?.dirty ||
+                                signupForm.get('role')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('role').hasError('required')">
+                                Role is required.
+                            </span>
+                        
+                    </div>
               </c-input-group>
               <div class="d-grid">
-                <button cButton color="success">Create Account</button>
+                <button type="submit" cButton color="success">Create Account</button>
               </div>
             </form>
+            <button (click)="goToLoginPage('login')">Login</button>
           </c-card-body>
         </c-card>
       </c-col>
     </c-row>
   </c-container>
+</div> -->
+
+<div class="body"> 
+	<div class="main">  	
+		<!-- <input type="checkbox" id="chk" aria-hidden="true"> -->
+            <h3 class="title"><b>Signup</b></h3>
+			<div class="signup">   
+				<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div> 
+                        <div> 
+                            <input 
+                                type="text" 
+                                formControlName="name" 
+                                name="txt" placeholder="Name"
+                                class="form-control form-control-sm">
+                        </div>
+                        <div *ngIf="
+                                signupForm.get('name')?.invalid &&
+                                signupForm.get('name')?.errors &&
+                                (signupForm.get('name')?.dirty ||
+                                signupForm.get('name')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('name').hasError('required')">
+                                Name is required.
+                            </span>
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('name').hasError('pattern')">
+                                No special characters are allowed.
+                            </span>
+                    </div>
+                </div>
+
+                <div> 
+                    <div>
+                         <input type="text" 
+                            formControlName="email" 
+                            name="email" 
+                            class="form-control form-control-sm" 
+                            placeholder="Email">
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('email')?.invalid &&
+                                signupForm.get('email')?.errors &&
+                                (signupForm.get('email')?.dirty ||
+                                signupForm.get('email')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('email').hasError('required')">
+                                Email is required.
+                            </span>
+                    </div>
+                </div>
+
+                <div> 
+                    <div>
+                        <input 
+                            type="text" 
+                            formControlName="address" 
+                            name="address" 
+                            class="form-control form-control-sm" 
+                            placeholder="Address" 
+                            >
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('address')?.invalid &&
+                                signupForm.get('address')?.errors &&
+                                (signupForm.get('address')?.dirty ||
+                                signupForm.get('address')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('address').hasError('required')">
+                                Email is required.
+                            </span>
+                    </div>
+                </div>
+                <div> 
+                        <div>
+                            <input 
+                                type="text" 
+                                formControlName="mobile" 
+                                name="mobile" 
+                                class="form-control form-control-sm" 
+                                placeholder="Mobile" 
+                                >
+                        </div>
+                        <div *ngIf="
+                                signupForm.get('mobile')?.invalid &&
+                                signupForm.get('mobile')?.errors &&
+                                (signupForm.get('mobile')?.dirty ||
+                                signupForm.get('mobile')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('mobile').hasError('required')">
+                                Mobile is required.
+                            </span>
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('mobile').hasError('pattern')">
+                                No special characters are allowed.
+                            </span>
+                        </div>
+                </div>
+
+                <div> 
+                    <div>
+                        <input 
+                            type="password" 
+                            formControlName="password" 
+                            name="password" 
+                            class="form-control form-control-sm" 
+                            placeholder="Password" 
+                            >
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('password')?.invalid &&
+                                signupForm.get('password')?.errors &&
+                                (signupForm.get('password')?.dirty ||
+                                signupForm.get('password')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('password').hasError('required')">
+                                Password is required.
+                            </span>
+                        
+                    </div>
+                </div>
+
+                <div> 
+                    <div>
+                         <input 
+                            type="text" 
+                            formControlName="role" 
+                            name="role" 
+                            class="form-control form-control-sm" 
+                            placeholder="Role" 
+                            >
+                    </div>
+                    <div *ngIf="
+                                signupForm.get('role')?.invalid &&
+                                signupForm.get('role')?.errors &&
+                                (signupForm.get('role')?.dirty ||
+                                signupForm.get('role')?.touched)">
+                            <span
+                                class="text-danger"
+                                *ngIf="signupForm.get('role').hasError('required')">
+                                Role is required.
+                            </span>
+                        
+                    </div>
+                </div>
+					<button type="submit">Sign up</button>
+				</form>
+                <button (click)="goToLoginPage('login')">Login</button>
+			</div>
+	</div>
 </div>

@@ -1,19 +1,24 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable } from 'rxjs';
 import { Seat } from '../core/models/metro/seat.model';
 import { Train } from '../core/models/metro/train.model';
 import { passenger } from '../core/models/metro/passenger.model';
 import { Passenger } from '../core/models/metro/passenger.model';
 import { booking, Booking } from '../core/models/metro/booking.model';
 import { Transaction } from '../core/models/metro/transaction.model';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
+//import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
 export class TrainService {
+  currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
+
   baseURL = "https://localhost:7020/api/";
-  
+
+  jwtHelperService = new JwtHelperService();
+
  httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -102,6 +107,30 @@ export class TrainService {
 
   addTicket(passengerId:number,bookingId:number,trainId:number){
     return this.httpService.get<any>(this.baseURL+'Ticket/SaveTicket?passengerId='+passengerId+'&bookingId='+bookingId+'&trainId='+trainId);
+  }
+
+
+  //User login & registration
+  registerUser(val: any) {
+    return this.httpService.post<any>(this.baseURL + 'User/CreateUser', val);
+  }
+
+  loginUser(data: any){
+    console.log(data);
+    return this.httpService.post<any>(this.baseURL+'User/LoginUser',data)
+  }
+
+  setToken(token: string) {
+    //localStorage.setItem("access_token", token);
+    localStorage.getItem('token')
+    this.loadCurrentUser();
+  }
+
+  loadCurrentUser() {
+    const token = localStorage.getItem('token');
+    const userInfo = token != null ? this.jwtHelperService.decodeToken(token) : null;
+    
+    console.log(userInfo);
   }
 
 }
