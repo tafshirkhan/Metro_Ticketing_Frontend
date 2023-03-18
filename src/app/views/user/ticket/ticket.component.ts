@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
 import jsPDF from 'jspdf';
@@ -12,6 +12,7 @@ import { TrainService } from 'src/app/services/train.service';
   styleUrls: ['./ticket.component.scss']
 })
 export class TicketComponent implements OnInit{
+  @ViewChild("ticket",{static:false}) el!: ElementRef;
   ticketForm: FormGroup;
 
   trainData: any;
@@ -51,9 +52,14 @@ export class TicketComponent implements OnInit{
       .subscribe((res) => {
         console.log(res);
       });
-    let pdf = new jsPDF();
+    let pdf = new jsPDF('p','pt','a4');
     pdf.text("Ticket", 19, 19);
-    pdf.save("ticket.pdf");
+    pdf.html(this.el.nativeElement, {
+      callback: (pdf) => {
+         pdf.save("ticket.pdf");
+      }
+    })
+   
   
   }
 
