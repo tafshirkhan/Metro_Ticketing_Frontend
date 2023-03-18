@@ -100,4 +100,8 @@ export class TrainService {
     return this.httpService.post<Transaction>(this.baseURL +'Transaction',val);
   }
 
+  addTicket(passengerId:number,bookingId:number,trainId:number){
+    return this.httpService.get<any>(this.baseURL+'Ticket/SaveTicket?passengerId='+passengerId+'&bookingId='+bookingId+'&trainId='+trainId);
+  }
+
 }

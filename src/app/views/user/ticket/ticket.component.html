@@ -1,0 +1,114 @@
+<c-card>
+  <c-card-header><b>Ticket Details</b></c-card-header>
+  <c-card-body>
+    <div>
+        <div class="row">
+            <div class="col">Train Name</div>
+            <div class="col">Arrival Station</div>
+            <div class="col">Departure Station</div>
+            <div class="col">Arrival Date</div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <div>
+        <div class="row">
+            <div class="col">Departure Date</div>
+            <div class="col">Arrival Time</div>
+            <div class="col">Departure Time</div>
+            <div class="col">Issue Date</div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <div>
+        <div class="row">
+            <div class="col">Age</div>
+            <div class="col">Gender</div>
+            <div class="col">Fare</div>
+            <div class="col">Seat Number</div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+    </div>
+    
+    
+    <!-- <div> 
+        <table cTable hover striped *ngIf="trainData ">
+        <thead>
+            <tr >
+                <th  scope="col">Train Name</th>
+                <th  scope="col">Arrival Station</th>
+                <th  scope="col">Departure Station</th>
+                <th  scope="col">Arrival Date</th>
+                <th  scope="col">Departure Date</th>
+                <th  scope="col">Arrival Time</th>
+                <th  scope="col">Departure Time</th>
+            </tr>
+        </thead>
+        <tbody >
+                <tr *ngFor="let train of trainData">
+                    <td>{{train.trainName}}</td>
+                    <td>{{train.arrivalStation}}</td>
+                    <td>{{train.departureStation}}</td>
+                    <td>{{train.arrivalDate}}</td>
+                    <td>{{train.departureDate}}</td>
+                    <td>{{train.arrivalTime}}</td>
+                    <td>{{train.departureTime}}</td>
+                    
+                </tr>
+        </tbody>
+    </table>
+    </div>
+    <div> 
+        <table cTable hover striped *ngIf="passengerData">
+        <thead>
+            <tr>
+                <th  scope="col">Passenger Name</th>
+                <th  scope="col">Age</th>
+                <th  scope="col">Gender</th>
+            </tr>
+        </thead>
+        <tbody >
+                <tr *ngFor="let passenger of passengerData">
+                    <td>{{passenger.passengerName}}</td>
+                    <td>{{passenger.age}}</td>
+                    <td>{{passenger.gender}}</td>
+                </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div> 
+        <table cTable hover striped *ngIf="bookingData">
+        <thead>
+            <tr>
+                <th  scope="col">Fare</th>
+                <th  scope="col">Seat Number</th>
+                <th  scope="col">Issue Date</th>
+            </tr>
+        </thead>
+        <tbody >
+                <tr *ngFor="let booking of bookingData">
+                    <td>{{booking.fare}}</td>
+                    <td>{{booking.seatNum}}</td>
+                    <td>{{booking.date}}</td>
+                </tr>
+        </tbody>
+    </table>
+    </div> -->
+    <button style="margin-top: 5px;"  cButton color="info">Download</button>    
+
+  </c-card-body>
+</c-card>

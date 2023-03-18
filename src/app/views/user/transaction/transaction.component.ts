@@ -66,32 +66,33 @@ export class TransactionComponent implements OnInit{
                console.log(res);
                alert("Payment Successful");  
           });
+          this.router.navigateByUrl('/user/get-ticket');
     }
   }
 
-  payAmount() {
-    var passengerData = localStorage.getItem('passengers');
-    this.passengerId = JSON.parse(passengerData);
-    this.passId = this.passengerId.passengerId;
-    //console.log(this.passId);
+  // payAmount() {
+  //   var passengerData = localStorage.getItem('passengers');
+  //   this.passengerId = JSON.parse(passengerData);
+  //   this.passId = this.passengerId.passengerId;
+  //   //console.log(this.passId);
 
-    this.trainService
-      .getBookingPassengerId(this.passId)
-      .subscribe((res) => {
-        this.trainService
-          .confirmBooking(res)
-          .subscribe((result) => {
-            console.log(result);
-            alert("Ticket confirmed")
-          });
-        console.log(res);
-        localStorage.setItem('bookingId', JSON.stringify(res));
-        alert("Payment successful");
-      });
+  //   this.trainService
+  //     .getBookingPassengerId(this.passId)
+  //     .subscribe((res) => {
+  //       this.trainService
+  //         .confirmBooking(res)
+  //         .subscribe((result) => {
+  //           console.log(result);
+  //           alert("Ticket confirmed")
+  //         });
+  //       console.log(res);
+  //       localStorage.setItem('bookingId', JSON.stringify(res));
+  //       alert("Payment successful");
+  //     });
     
-    //this.router.navigateByUrl('/user/get-ticket');
+  //   //this.router.navigateByUrl('/user/get-ticket');
 
-  }
+  // }
 
   //  makePayment(amount: any) {
   //   const paymentHandler = (<any>window).StripeCheckout.configure({
