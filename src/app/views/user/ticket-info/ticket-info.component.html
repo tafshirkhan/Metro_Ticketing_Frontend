@@ -57,13 +57,13 @@
                     <div> 
                         <table cTable hover striped>
                             <thead>
-                                <tr>
+                                <tr *ngIf="trainFare">
                                     <th  scope="col">Fare</th>
                                 </tr>
                             </thead>
                             <tbody >
                                     <tr *ngIf="trainFare">
-                                        <td>{{trainFare.totalFare|currency:'TAKA':'symbol-narrow'}}</td>
+                                        <td>{{trainFare.fare|currency:'TK: ':'symbol-narrow'}}</td>
                                     </tr>
                             </tbody>
                         </table>

@@ -6,6 +6,7 @@ import { Train } from '../core/models/metro/train.model';
 import { passenger } from '../core/models/metro/passenger.model';
 import { Passenger } from '../core/models/metro/passenger.model';
 import { booking, Booking } from '../core/models/metro/booking.model';
+import { Transaction } from '../core/models/metro/transaction.model';
 
 @Injectable({
   providedIn: 'root'
@@ -92,6 +93,11 @@ export class TrainService {
   }
   confirmBooking(bookingId:any){
     return this.httpService.get<any>(this.baseURL+'Booking/ConfirmBooking/'+bookingId);
+  }
+
+
+  addTransaction(val:any){
+    return this.httpService.post<Transaction>(this.baseURL +'Transaction',val);
   }
 
 }

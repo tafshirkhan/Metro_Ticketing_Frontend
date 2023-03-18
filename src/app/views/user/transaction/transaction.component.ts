@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
-import { Train } from 'src/app/core/models/metro/train.model';
+import { Transaction } from 'src/app/core/models/metro/transaction.model';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { TrainService } from 'src/app/services/train.service';
 
@@ -12,11 +12,13 @@ import { TrainService } from 'src/app/services/train.service';
 })
 export class TransactionComponent implements OnInit{
   transactionForm: FormGroup;
-
+  tModel: Transaction = new Transaction();
   paymentHandler: any = null;
   passengerId: any;
-
+  bID: any;
+  bFare: any;
   passId: any;
+  fare: any;
 
   constructor(
     private Router: ActivatedRoute,
@@ -29,14 +31,42 @@ export class TransactionComponent implements OnInit{
 
   ngOnInit(): void {
     this.transactionForm = this.getTransactionFormGroup();
+    var fareData = localStorage.getItem('singleBook');
+    this.fare = JSON.parse(fareData);
   }
 
   getTransactionFormGroup() {
     return this.formBuilder.group({
-      id: [''],
+      transactionId: [''],
       number: ['', [Validators.required]],
-      cvv:['', [Validators.required]],
+      cvv: ['', [Validators.required]],
+      transactionStatus:['Successful']
     })
+  }
+
+  onSubmit() {
+    if (this.transactionForm.valid) {
+      let booking = localStorage.getItem("singleBook");
+      this.bID = JSON.parse(booking);
+      this.bFare = JSON.parse(booking);
+
+      this.tModel.bookingId = this.bID.bookingId;
+      this.tModel.fare = this.bFare.fare;
+      this.tModel.transactionStatus = this.transactionForm.value.transactionStatus;
+      console.log(this.tModel);
+
+      this.trainService
+          .addTransaction(this.tModel)
+          .subscribe((res)=>{
+            this.trainService.confirmBooking(res.bookingId)
+              .subscribe((result) => {
+                console.log(result);
+                alert("Booking Confirmed");
+               });
+               console.log(res);
+               alert("Payment Successful");  
+          });
+    }
   }
 
   payAmount() {

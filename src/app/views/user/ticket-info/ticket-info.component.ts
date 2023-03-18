@@ -18,6 +18,7 @@ export class TicketInfoComponent implements OnInit {
   passengerValue: any;
   trainFare: any;
 
+
   passengerId: any;
   passIdStatic: any;
   constructor(
@@ -34,10 +35,13 @@ export class TicketInfoComponent implements OnInit {
   }
 
   getAllData() {
-    var storageData = localStorage.getItem('trainId');
-    this.trainValue = JSON.parse(storageData);
+    var trainData = localStorage.getItem('trains');
+    this.trainValue = JSON.parse(trainData);
     var passengerData = localStorage.getItem('passengers');
     this.passengerValue = JSON.parse(passengerData);
+    var fareData = localStorage.getItem('singleBook');
+    this.trainFare = JSON.parse(fareData);
+
     //this.passengerId = '858E4E49-1C44-485F-4A25-08DB2709C36A';
     //this.passIdStatic = JSON.parse();
     //this.passengerId = this.passengerValue.passengerId;
@@ -52,10 +56,6 @@ export class TicketInfoComponent implements OnInit {
     //   console.log(res);
     //   localStorage.setItem('trainFare', JSON.stringify(res));
     // });
-  }
-
-  addTicket() {
-    
   }
 
   goForPayment() {
