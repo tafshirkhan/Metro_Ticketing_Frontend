@@ -8,8 +8,8 @@ export interface Passenger{
 }
 
 export class passenger{
-    passengerId: string;
-    userId: string;
+    passengerId: number;
+    userId: number;
     passengerName: string;
     age: number;
     gender: string;

@@ -65,6 +65,10 @@ export class TrainService {
     return this.httpService.post<Passenger>(this.baseURL +'Passenger/SavePassenger',val);
   }
 
+  getAllPassenger():Observable<Passenger>{
+    return this.httpService.get<Passenger>(this.baseURL +'Passenger');
+  }
+
   calculatedTrainFare(trainId:number,passengerId:number,userId:number){
     return this.httpService.get<any>(this.baseURL +'Booking/CalculateTotalFare?trainId='+trainId+'&passengerId='+passengerId+'&userId='+userId);
   }
@@ -76,10 +80,14 @@ export class TrainService {
   addBooking(val:any){
     return this.httpService.post<booking>(this.baseURL +'Booking/SaveBooking',val);
   }
+  getBookingById(id:number){
+    return this.httpService.get<booking>(this.baseURL + 'Booking/'+id);
+  }
   getBookingPassengerId(passengerId:number){
     return this.httpService.get<any>(this.baseURL +'Booking/BookingByPassenger/'+passengerId);
   }
   confirmBooking(bookingId:any){
     return this.httpService.get<any>(this.baseURL+'Booking/ConfirmBooking/'+bookingId);
   }
+
 }

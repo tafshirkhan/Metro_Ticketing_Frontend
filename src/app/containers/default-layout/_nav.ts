@@ -17,26 +17,6 @@ export const navItems: INavData[] = [
       {
         name: 'Seat',
         url: '/base/seat-list'
-      },
-      {
-        name: 'Breadcrumbs',
-        url: '/base/breadcrumbs'
-      },
-      {
-        name: 'Cards',
-        url: '/base/cards'
-      },
-      {
-        name: 'Carousel',
-        url: '/base/carousel'
-      },
-      {
-        name: 'Collapse',
-        url: '/base/collapse'
-      },
-      {
-        name: 'Tooltips',
-        url: '/base/tooltips'
       }
     ]
   },

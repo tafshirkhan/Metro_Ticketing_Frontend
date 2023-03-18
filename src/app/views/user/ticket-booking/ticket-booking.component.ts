@@ -45,6 +45,22 @@ export class TicketBookingComponent implements OnInit {
     })
   }
 
+  // findPassenger(id: number) {
+  //   this.trainService.getPassengerById(id).subscribe(data => {
+  //     console.log(data);
+  //   });
+  // }
+
+  getPassengerById(id: number) {
+    this.trainService.getPassengerById(id).subscribe((res) => {
+      console.log(res);
+      console.log(res.passengerId);
+      localStorage.setItem('trains',JSON.stringify(res));
+      this.router.navigateByUrl('/user/passenger');
+
+    })
+  }
+
   onSubmit() {
     if (this.ticketForm.valid) {
       let user = localStorage.getItem("userId");

@@ -98,5 +98,32 @@
       </div>
     </form>
     </div>
+
+    <h6 style="margin-top: 10px;"><b>Passengers List</b></h6> 
+    <div> 
+        <table cTable hover striped *ngIf="passengerValue">
+        <thead>
+            <tr>
+                <th  scope="col">Passenger Name</th>
+                <th  scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody >
+                <tr *ngFor="let passenger of passengerValue" >
+                    <td>{{passenger.passengerName}}</td>
+                   <td class="text-center">
+                <button
+                  class="ang-btn-edit ang-icon-btn"
+                  cButton
+                  color="success"
+                  variant="outline"
+                  title="book now">Click to next
+                </button>
+              </td>
+                </tr>
+        </tbody>
+</table>
+
+    </div>
   </c-card-body>
 </c-card>

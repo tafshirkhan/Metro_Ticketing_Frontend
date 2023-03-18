@@ -16,7 +16,7 @@ export class PassengerComponent implements OnInit{
   passenger: any = {};
   passengers: any;
   passenngerModel: passenger = new passenger();
-  
+  passengerValue: any;
 
   constructor(
     private Router: ActivatedRoute,
@@ -30,6 +30,7 @@ export class PassengerComponent implements OnInit{
 
   ngOnInit(): void {
     this.passengerForm = this.getPassengerFormGroup();
+    this.getListOfPassenger();
   }
 
   getPassengerFormGroup() {
@@ -49,6 +50,8 @@ export class PassengerComponent implements OnInit{
       this.trainService.addPassenger(this.passengerForm.value).subscribe(res => {
           console.log(res);
           alert("Passenger details has been added");
+          this.passengerForm.reset();
+          location.reload();
           localStorage.setItem("passengers", JSON.stringify(res));
           console.log(localStorage);
           var jsonValue = localStorage.getItem("passengers") as string;
@@ -57,7 +60,7 @@ export class PassengerComponent implements OnInit{
           console.log(saveData);
           console.log(saveData.passengerName);
        
-          this.router.navigateByUrl('/user/ticket-booking');
+          //this.router.navigateByUrl('/user/ticket-booking');
       })
     }
 
@@ -76,9 +79,16 @@ export class PassengerComponent implements OnInit{
     //     var saveData = JSON.parse(jsonValue);
     //     console.log(saveData);
     //     console.log(saveData.passengerName);
-    //     this.router.navigateByUrl('/user/ticket-information');
+    //     this.router.navigateByUrl('/user/ticket-booking');
     //   })
     // }
+  }
+
+  getListOfPassenger() {
+    this.trainService.getAllPassenger().subscribe(res => {
+      console.log(res);
+      this.passengerValue = res;
+    })
   }
 
 }
