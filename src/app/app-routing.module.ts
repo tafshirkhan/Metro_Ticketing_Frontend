@@ -8,15 +8,16 @@ import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: 'dashboard',
+  //   pathMatch: 'full'
+  // },
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
-  },
-  {
-    path: '',
-    component: DefaultLayoutComponent,
-    //component: LoginComponent,
+    //component: DefaultLayoutComponent,
+    component: LoginComponent,
+    //pathMatch: 'full',
     data: {
       title: 'Home'
     },

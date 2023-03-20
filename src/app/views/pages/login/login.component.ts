@@ -44,23 +44,30 @@ loginForm: FormGroup;
   }
 
   goToSignupPage(pageName:string):void {
-    this.router.navigate([`${pageName}`]);
+    this.router.navigate([`register`]);
   }
 
   onSubmit() {
     console.log(this.loginForm);
     if (this.loginForm.valid) {
-      this.trainService.loginUser(this.loginForm.value).subscribe(res => {
+      this.trainService.Login(this.loginForm.value).subscribe((res) => {
         console.log(res);
-        if (res == "Login Failed") {
-          this.isUserValid = false;
-          alert("Something is wrong");
-        }
+        // if (res == "Login Failed") {
+        //   this.isUserValid = false;
+        //   alert("Something is wrong");
+        // }
+        // else {
+        //   this.isUserValid = true;
+        //   this.trainService.setToken(res);
+        //   //this.router.navigate(['admin-dashboard']);
+        //   this.router.navigateByUrl('/user/train');
+        // }
+        //localStorage.setItem('token', res.token);
+        //console.log(res.token);
+        if (this.loginForm.value.email == 'tafshir100@gmail.com')
+          this.router.navigateByUrl('dashboard');
         else {
-          this.isUserValid = true;
-          this.trainService.setToken(res);
-          //this.router.navigate(['admin-dashboard']);
-          this.router.navigateByUrl('/user/train');
+          this.router.navigateByUrl('user');
         }
         
       });

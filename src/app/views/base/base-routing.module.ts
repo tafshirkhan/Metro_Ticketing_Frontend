@@ -8,10 +8,10 @@ import { AddSeatComponent } from './seats/seat/add-seat/add-seat.component';
 
 const routes: Routes = [
   {
-    path: '',
-    // data: {
-    //   title: 'Base',
-    // },
+   path: '',
+    data: {
+      title: 'Base',
+    },
     children: [
       {
         path: '',
@@ -40,6 +40,11 @@ const routes: Routes = [
       },
     ],
   },
+
+  // {
+  //       path: 'train-list',
+  //       component: TrainListComponent
+  // }
 ];
 
 @NgModule({

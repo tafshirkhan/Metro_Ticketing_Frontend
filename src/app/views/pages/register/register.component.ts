@@ -66,7 +66,7 @@ signupForm: FormGroup;
   }
 
   goToLoginPage(pageName: string) {
-    this.router.navigate([`${pageName}`])
+    this.router.navigate(['login'])
   }
   
   onSubmit() {

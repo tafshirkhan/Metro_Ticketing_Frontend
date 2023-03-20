@@ -55,13 +55,13 @@ export class PassengerComponent implements OnInit{
           this.passengerForm.reset();
           location.reload();
           localStorage.setItem("passengers", JSON.stringify(res));
-          console.log(localStorage);
+          //console.log(localStorage);
           var jsonValue = localStorage.getItem("passengers") as string;
           console.log(jsonValue);
           var saveData = JSON.parse(jsonValue);
           console.log(saveData);
           console.log(saveData.passengerName);
-       
+          //this.getPassengerById(this.passengerForm.value.id);
           //this.router.navigateByUrl('/user/ticket-booking');
       })
     }
@@ -93,7 +93,7 @@ export class PassengerComponent implements OnInit{
     })
   }
 
-  getPassengerById(id: number) {
+  getPassengerById(id: any) {
     this.trainService.getPassengerById(id).subscribe((res) => {
       console.log(res);
       console.log(res.passengerId);

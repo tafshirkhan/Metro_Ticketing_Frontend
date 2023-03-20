@@ -9,6 +9,7 @@ import { booking, Booking } from '../core/models/metro/booking.model';
 import { Transaction } from '../core/models/metro/transaction.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
 //import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../core/models/metro/user.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -79,7 +80,8 @@ export class TrainService {
     return this.httpService.get<any>(this.baseURL +'Booking/CalculateTotalFare?trainId='+trainId+'&passengerId='+passengerId+'&userId='+userId);
   }
 
-  getPassengerById(id:number){
+  getPassengerById(id: any) {
+    console.log(id);
     return this.httpService.get<Passenger>(this.baseURL +'Passenger/'+id);
   }
 
@@ -118,6 +120,11 @@ export class TrainService {
   loginUser(data: any){
     console.log(data);
     return this.httpService.post<any>(this.baseURL+'User/LoginUser',data)
+  }
+
+  Login(formData: any){
+    console.log(formData);
+    return this.httpService.post<User>(this.baseURL+'User/login',formData)
   }
 
   setToken(token: string) {
