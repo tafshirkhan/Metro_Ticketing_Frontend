@@ -5,10 +5,12 @@ ADMIN:
 After successfully logged in into the system, system will navigate to the admin dashboard where admin can add, edit & delete train.
 
 <<<seat page>>>
+
 After successfully adding of new train system will navigate to the seat list page where admin can add seat amount against any specific train.
 Admin can also edit & delete seat amount from the seat list page.
 
 USER:
+
 <<<train page>>>
 After successfully logged in into the system, system will navigate to the train view page, where user can search any train by providing arrival station, departure station and 
 journey date.
